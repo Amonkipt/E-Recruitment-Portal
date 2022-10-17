@@ -1,0 +1,2474 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+
+@using E_Recruitment_Portal.FieldsofStudy
+@using E_Recruitment_Portal.ApplicantJobEducation
+@using E_Recruitment_Portal.CompanyJobCard
+@using E_Recruitment_Portal.Models
+
+
+@{
+    ViewBag.Title = "Application Form";
+}
+
+<style>
+    body {
+        background-color: #eee
+    }
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0rem rgba(0, 123, 255, .25)
+    }
+
+    .btn-secondary:focus {
+        box-shadow: 0 0 0 0rem rgba(108, 117, 125, .5)
+    }
+
+    .close:focus {
+        box-shadow: 0 0 0 0rem rgba(108, 117, 125, .5)
+    }
+
+    .mt-200 {
+        margin-top: 200px
+    }
+
+    :root {
+        --tab-dark-bg: var(--tab-recessive-bg);
+        --tab-light-bg: #efa5a5;
+        --tab-border-right-color: var(--tab-dominant-bg);
+    }
+
+
+    .sw-theme-arrows > ul.step-anchor > li.done > a:after {
+        border-left: 30px solid var(--tab-light-bg);
+    }
+
+    .sw-theme-arrows > ul.step-anchor > li.done > a {
+        border-color: #233226 !important;
+        color: #fff !important;
+        background: var(--tab-light-bg) !important;
+    }
+
+    .sw-theme-arrows > ul.step-anchor > li.active > a:after {
+        border-left: 30px solid var(--tab-recessive-bg) !important;
+    }
+
+    .sw-theme-arrows > ul.step-anchor > li.active > a {
+        border-color: var(--tab-recessive-bg) !important;
+        color: #fff !important;
+        background: var(--tab-recessive-bg) !important;
+    }
+
+
+    .sw-theme-arrows > ul.step-anchor > li > a:before {
+        border-left: 30px solid var(--tab-dominant-bg);
+    }
+</style>
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <p>@Html.ActionLink("Home Page", "OpenApplications", "HomePage")</p>
+        </li>
+        <li class="breadcrumb-item active">@ViewBag.Title</li>
+    </ol>
+    <div id="smartwizard">
+        <ul>
+            <li><a href="#step-1" class="custom-tab-step">Step 1<br /><small>Personal Info</small></a></li>
+            <li><a href="#step-2" class="custom-tab-step">Step 2<br /><small>Education Background</small></a></li>
+            <li><a href="#step-3" class="custom-tab-step">Step 3<br /><small>Work Experience</small></a></li>
+            <li><a href="#step-4" class="custom-tab-step">Step 4<br /><small>Professional Courses</small></a></li>
+            <li><a href="#step-5" class="custom-tab-step">Step 5<br /><small>Professional Membership</small></a></li>
+            <li><a href="#step-6" class="custom-tab-step">Step 6<br /><small>Referees</small></a></li>
+            <li><a href="#step-7" class="custom-tab-step">Step 7<br /><small>Hobbies</small></a></li>
+            <li><a href="#step-8" class="custom-tab-step">Step 8<br /><small>Attachments & Finish</small></a></li>
+        </ul>
+        <div class="mt-4">
+            <div id="step-1">
+                @using (Html.BeginForm("ManageProfile", "HomePage", new { AppNo = Model.No, jobid = ViewBag.JobId, no = ViewBag.nos }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form"@*, id = "profile_form"*@ }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @*@Html.HiddenFor(model => model.No)*@
+                    @*<input style="display: none" name="No" value="@Model.No" />*@
+
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">First Name</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "input", @readonly = "true" } })
+                                @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Middle Name</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Middle_Name, new { htmlAttributes = new { @class = "input", @readonly = "true" } })
+                                @Html.ValidationMessageFor(model => model.Middle_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Last Name</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "input", @readonly = "true" } })
+                                @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">ID Number</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.ID_Number, new { htmlAttributes = new { @class = "input" } })
+                                @Html.ValidationMessageFor(model => model.ID_Number, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-6" })
+                            <div class="col-md-12">
+                                @{
+                                    List<SelectListItem> llistItem = new List<SelectListItem>();
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Male",
+                                        Value = "Male"
+                                    });
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Female",
+                                        Value = "Female"
+                                    });
+                                }
+                                @Html.DropDownListFor(model => model.Gender, llistItem, "", new { @class = "input" })
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            @Html.LabelFor(model => model.Citizenship, htmlAttributes: new { @class = "control-label col-md-6" })
+                            <div class="col-md-12">
+                                @Html.DropDownListFor(model => model.Citizenship, (IEnumerable<SelectListItem>)ViewBag.countries11, "Choose...", new { @class = "input" })
+                                @Html.ValidationMessageFor(model => model.Citizenship, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Marital Status</label>
+                            <div class="col-md-12">
+                                @{
+                                    List<SelectListItem> llistItem1 = new List<SelectListItem>();
+                                    llistItem1.Add(new SelectListItem
+                                    {
+                                        Text = "Single",
+                                        Value = "Single"
+                                    });
+                                    llistItem1.Add(new SelectListItem
+                                    {
+                                        Text = "Married",
+                                        Value = "Married"
+                                    });
+                                    llistItem1.Add(new SelectListItem
+                                    {
+                                        Text = "Separated",
+                                        Value = "Separated"
+                                    });
+                                    llistItem1.Add(new SelectListItem
+                                    {
+                                        Text = "Divorced",
+                                        Value = "Divorced"
+                                    });
+                                    llistItem1.Add(new SelectListItem
+                                    {
+                                        Text = "Widow(er)",
+                                        Value = "Widow_er"
+                                    });
+                                    llistItem1.Add(new SelectListItem
+                                    {
+                                        Text = "Other",
+                                        Value = "Other"
+                                    });
+                                }
+                                @Html.DropDownListFor(model => model.Marital_Status, llistItem1, "", new { @class = "input" })
+                                @Html.ValidationMessageFor(model => model.Marital_Status, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            @Html.LabelFor(model => model.Disabled, htmlAttributes: new { @class = "control-label col-md-6" })
+                            <div class="col-md-12">
+                                @{
+                                    List<SelectListItem> llistItem2 = new List<SelectListItem>();
+                                    llistItem2.Add(new SelectListItem
+                                    {
+                                        Text = "No",
+                                        Value = "No"
+                                    });
+                                    llistItem2.Add(new SelectListItem
+                                    {
+                                        Text = "Yes",
+                                        Value = "Yes"
+                                    });
+                                }
+                                @Html.DropDownListFor(model => model.Disabled, llistItem2, "", new { @class = "input" })
+                                @Html.ValidationMessageFor(model => model.Disabled, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Date Of Birth</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Date_Of_Birth, new { htmlAttributes = new { @class = "input datepicker" } })
+                                @Html.ValidationMessageFor(model => model.Date_Of_Birth, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Phone Number</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Cellular_Phone_Number, new { htmlAttributes = new { @class = "input" } })
+                                @Html.ValidationMessageFor(model => model.Cellular_Phone_Number, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">E-Mail</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.E_Mail, new { htmlAttributes = new { @class = "input", @readonly = "true" } })
+                                @Html.ValidationMessageFor(model => model.E_Mail, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Postal Address</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Postal_Address, new { htmlAttributes = new { @class = "input" } })
+                                @Html.ValidationMessageFor(model => model.Postal_Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Post Code</label>
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Post_Code, new { htmlAttributes = new { @class = "input" } })
+                                @Html.ValidationMessageFor(model => model.Post_Code, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @if (Model == null)
+                        {
+                            <div class="col-md-4 a">
+                                <br />
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" value="Create Profile" class="btn btn-company btn-block" />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-4 a">
+                                <br />
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" value="Manage Profile" class="btn btn-company btn-block" />
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <br />
+                }
+            </div>
+            <div id="step-2">
+                <section>
+                    <div class="table-responsive text-nowrap">
+                        <table id="example" class="table table-striped" style="border:none;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Institution Name</th>
+                                    <th>Country</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="education_tbody" data-delete-url="@Url.Action("RemoveEducation", "HomePage")">
+                                @{
+                                    var index = 0;
+                                }
+                                @if (Model.Education != null)
+                                {
+                                    foreach (var item in Model.Education.Where(m => m.Start_Date != DateTime.MinValue || m.End_Date != DateTime.MinValue))
+                                    {
+                                        index++;
+                                        <tr class="delete_ancestor">
+                                            <td>
+                                                <div class="form-group">
+                                                    <button type="submit" data-delete-url="@Url.Action("RemoveEducation", "HomePage", new { key = item.Key })" class="btn btn-danger fa fa-trash xs-margin delete del_btn"></button>
+                                                </div>
+                                            </td>
+                                            <td>@item.Start_Date.ToShortDateString()</td>
+                                            <td>@item.End_Date.ToShortDateString()</td>
+                                            <td>@item.Institution_Name</td>
+                                            <td>@item.Country</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <br />
+                <div>
+                    <h3 id="NewEducation" class="fa fa-plus"> Add New Education Level</h3>
+                </div>
+                <br />
+                <div style="display: none" id="AddLines0">
+                    @using (Html.BeginForm("ManageEducation", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "education_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        ApplicantJobEducation models = new ApplicantJobEducation();
+
+                        <h3 class="box-title">Education Level</h3>
+                        <hr />
+
+                        <input type="hidden" class="input" name="Applicant_No" value="@Model.No" />
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Education Type</label>
+                                <div class="col-md-12">
+                                    @{
+                                        List<SelectListItem> llistItema = new List<SelectListItem>();
+                                        llistItema.Add(new SelectListItem
+                                        {
+                                            Text = "University",
+                                            Value = "University"
+                                        });
+                                        llistItema.Add(new SelectListItem
+                                        {
+                                            Text = "Professional",
+                                            Value = "Professional"
+                                        });
+                                        llistItema.Add(new SelectListItem
+                                        {
+                                            Text = "College",
+                                            Value = "College"
+                                        });
+                                        llistItema.Add(new SelectListItem
+                                        {
+                                            Text = "Vocation",
+                                            Value = "Vocation"
+                                        });
+                                        llistItema.Add(new SelectListItem
+                                        {
+                                            Text = "High School",
+                                            Value = "High_School"
+                                        });
+                                        llistItema.Add(new SelectListItem
+                                        {
+                                            Text = "Primary",
+                                            Value = "Primary"
+                                        });
+                                    }
+                                    @Html.DropDownList("Education_Type", llistItema, "Select", new { @class = "input", id = "education" })
+                                    @Html.ValidationMessageFor(model => models.Education_Type, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Education Level</label>
+                                <div class="col-md-12">
+                                    @{
+                                        List<SelectListItem> llistItem = new List<SelectListItem>();
+                                        llistItem.Add(new SelectListItem
+                                        {
+                                            Text = "Professional",
+                                            Value = "Professional"
+                                        });
+                                        llistItem.Add(new SelectListItem
+                                        {
+                                            Text = "Doctorate",
+                                            Value = "Doctorate"
+                                        });
+                                        llistItem.Add(new SelectListItem
+                                        {
+                                            Text = "Masters Degree",
+                                            Value = "Masters_Degree"
+                                        });
+                                        llistItem.Add(new SelectListItem
+                                        {
+                                            Text = "Bachelors Degree",
+                                            Value = "Bachelors_Degree"
+                                        });
+                                        llistItem.Add(new SelectListItem
+                                        {
+                                            Text = "Higher/Post Graduate Diploma",
+                                            Value = "Higher_Post_Graduate_Diploma"
+                                        });
+                                        llistItem.Add(new SelectListItem
+                                        {
+                                            Text = "Diploma",
+                                            Value = "Diploma"
+                                        });
+                                        llistItem.Add(new SelectListItem
+                                        {
+                                            Text = "Certificate",
+                                            Value = "Certificate"
+                                        });
+                                    }
+                                    @Html.DropDownList("Education_Level", llistItem, "Select", new { @class = "input", id = "level", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => models.Education_Level, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Field of Study</label>
+                                <div class="col-md-12">
+                                    <select id="fos" name="Field_of_Study" class="input" disabled="disabled">
+                                        <option value="">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Course Name</label>
+                                <div class="col-md-12">
+                                    <select id="qc" name="Qualification_Code" class="input" disabled="disabled">
+                                        <option value="">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Start Date</label>
+                                <div class="col-md-12">
+                                    <input type="date" name="Start_Date" class="input" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">End Date</label>
+                                <div class="col-md-12">
+                                    <input name="End_Date" type="date" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Institution Name</label>
+                                <div class="col-md-12">
+                                    <input name="Institution_Name" type="text" class="input" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Proficiency Level</label>
+                                <div class="col-md-12">
+                                    <select class="input" id="proficiency" name="Proficiency_Level" disabled="disabled">
+                                        <option value="">Not Rated</option>
+                                        <option value="First_Class">First Class</option>
+                                        <option value="Second_Class_Upper">Second Class(Upper)</option>
+                                        <option value="Second_Class_Lower">Second Class(Lower)</option>
+                                        <option value="Pass">Pass</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Country</label>
+                                <div class="col-md-12">
+                                    <select name="Country" class="input">
+                                        <option value="">Select</option>
+                                        @foreach (var rel in ViewBag.countries)
+                                        {
+                                            <option value="@rel.Code">@rel.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            @*<div class="col-md-4 a">
+                                        <label class="control-label col-md-12">Country</label>
+                                        <div class="col-md-12">
+                                            <select name="Country" class="input">
+                                                <option value="">Select</option>
+                                                @foreach (var rel in ViewBag.countries)
+                                                {
+                                                    <option value="@rel.Code">@rel.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 a">
+                                        <label class="control-label col-md-12">County</label>
+                                        <div class="col-md-12">
+                                            <select name="Region" class="input">
+                                                <option value="">Select</option>
+                                                @foreach (var rel1 in ViewBag.county)
+                                                {
+                                                    <option value="@rel1.County">@rel1.County</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>*@
+                            <div class="col-md-4 a" id="hide1">
+                                <label class="control-label col-md-12">Description</label>
+                                <div class="col-md-12">
+                                    <input id="description" name="Description" type="text" class="input" disabled="disabled" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 a" id="hide2">
+                                <label class="control-label col-md-12">Grade</label>
+                                <div class="col-md-12">
+                                    <input name="Grade" id="grade" type="text" class="input" disabled="disabled" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <br />
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" value="Add Education Level" class="btn btn-company btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                    }
+                </div>
+            </div>
+            <div id="step-3" class="">
+                <section>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-striped example" style="border:none;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Employer</th>
+                                    <th>Job Title</th>
+                                    <th>No of Years</th>
+                                    <th>Country</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="work_tbody" data-delete-url="@Url.Action("RemoveWorkExperience", "HomePage")">
+                                @{
+                                    var index1 = 0;
+                                }
+                                @foreach (var item in Model.Experience.Where(m => m.Start_Date != DateTime.MinValue || m.End_Date != DateTime.MinValue))
+                                {
+                                    index1++;
+                                    <tr class="delete_ancestor">
+                                        <td>
+                                            <div class="form-group">
+                                                <button type="submit" data-delete-url="@Url.Action("RemoveWorkExperience", "HomePage", new { key = item.Key })" class="btn btn-danger fa fa-trash xs-margin delete del_btn"></button>
+                                            </div>
+                                        </td>
+                                        <td>@item.Start_Date.ToShortDateString()</td>
+                                        <td>@item.End_Date.ToShortDateString()</td>
+                                        <td>@item.Employer</td>
+                                        <td>@item.Job_Title</td>
+                                        <td>@item.No_of_Years</td>
+                                        <td>@item.Country</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <br />
+                <div>
+                    <h3 id="NewExperience" class="fa fa-plus"> Add New Work Experience</h3>
+                </div>
+                <br />
+                <div style="display: none" id="AddLines11">
+                    @using (Html.BeginForm("ManageExperience", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "work_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <h3 class="box-title">New Work Experience</h3>
+                        <hr />
+
+                        <input type="hidden" class="input" name="Applicant_No" value="@Model.No" />
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Start Date</label>
+                                <div class="col-md-12">
+                                    <input name="Start_Date" class="input" type="date" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">End Date</label>
+                                <div class="col-md-12">
+                                    <input name="End_Date" class="input" type="date" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Employer</label>
+                                <div class="col-md-12">
+                                    <input name="Employer" type="text" class="input" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Industry</label>
+                                <div class="col-md-12">
+                                    <select name="Industry" class="input">
+                                        <option value="">Select</option>
+                                        @foreach (var rel in ViewBag.cji)
+                                        {
+                                            <option value="@rel.Code">@rel.Description</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Hierarchy Level</label>
+                                <div class="col-md-12">
+                                    <select class="input" name="Hierarchy_Level">
+                                        <option value="">Select</option>
+                                        <option value="Consultant">Consultant</option>
+                                        <option value="Excecutive_Director">Excecutive/Director</option>
+                                        <option value="First_Level_Manager">First Level Manager</option>
+                                        <option value="Intern">Intern</option>
+                                        <option value="Middle_Level_Manager">Middle Level Manager</option>
+                                        <option value="Supervisor">Supervisor</option>
+                                        <option value="Support_Staff">Support Staff</option>
+                                        <option value="Top_Level_Manager">Top Level Manager</option>
+                                        <option value="Trainee_Attachee">Trainee/Attachee</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Functional Area</label>
+                                <div class="col-md-12">
+                                    <input name="Functional_Area" type="text" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Job Title</label>
+                                <div class="col-md-12">
+                                    <input name="Job_Title" type="text" class="input" />
+                                </div>
+                            </div>
+                            @*<div class="col-md-4 a">
+            <label class="control-label col-md-12">No of Years</label>
+            <div class="col-md-12">
+                <input name="No_of_Years" type="text" class="input" />
+            </div>
+        </div>*@
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Country</label>
+                                <div class="col-md-12">
+                                    <select name="Country" class="input">
+                                        <option value="">Select</option>
+                                        @foreach (var rel in ViewBag.countries)
+                                        {
+                                            <option value="@rel.Code">@rel.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Description</label>
+                                <div class="col-md-12">
+                                    <input name="Description" type="text" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Employer Email Address</label>
+                                <div class="col-md-12">
+                                    <input name="Employer_Email_Address" type="email" class="input" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 a">
+                                <label class="control-label col-md-12">Employer Postal Address</label>
+                                <div class="col-md-12">
+                                    <input name="Employer_Postal_Address" type="text" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 a">
+                                <br />
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" value="Add Work Experience" class="btn btn-company btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+                </div>
+            </div>
+            <div id="step-4" class="">
+                <section>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-striped example" style="border:none;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Qualification Code</th>
+                                    <th>Qualification Name</th>
+                                    <th>Section/Level</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="professional_tbody" data-delete-url="@Url.Action("RemoveProfessional", "HomePage")">
+                                @{
+                                    var index9 = 0;
+                                }
+                                @foreach (var item in Model.ProfessionalCourses)
+                                {
+                                    index9++;
+                                    <tr class="delete_ancestor">
+                                        <td>
+                                            <div class="form-group">
+                                                <button type="submit" data-delete-url="@Url.Action("RemoveProfessional", "HomePage", new { key = item.Key })" class="btn btn-danger fa fa-trash xs-margin delete del_btn"></button>
+                                            </div>
+                                        </td>
+                                        <td>@item.Qualification_Code</td>
+                                        <td>@item.Qualification_Name</td>
+                                        <td>@item.Section_Level</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <br />
+                <div>
+                    <h3 id="NewProfessional" class="fa fa-plus"> Add New Professional Course</h3>
+                </div>
+                <br />
+                <div style="display: none" id="AddLines">
+                    @using (Html.BeginForm("ManageProfessional", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "professional_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <h3 class="box-title">New Professional Course</h3>
+                        <hr />
+
+                        <input name="Applicant_No" class="input" value="@Model.No" type="hidden" />
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Name</label>
+                                <div class="col-md-12">
+                                    <select name="Qualification_Code" class="input" required>
+                                        <option value="">Select</option>
+                                        @foreach (var rel in ViewBag.pc)
+                                        {
+                                            <option value="@rel.Code">@rel.Description</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Section/Level</label>
+                                <div class="col-md-12">
+                                    <input name="Section_Level" type="text" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <br />
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" value="Add Professional Course" class="btn btn-company btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div id="step-5" class="">
+                <section>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-striped example" style="border:none;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Professional Body</th>
+                                    <th>Description</th>
+                                    <th>Membership No</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="membership_tbody" data-delete-url="@Url.Action("RemoveMembership", "HomePage")">
+                                @foreach (var item in Model.ProfessionalMembership)
+                                {
+                                    <tr class="delete_ancestor">
+                                        <td>
+                                            <div class="form-group">
+                                                <button type="submit" data-delete-url="@Url.Action("RemoveMembership", "HomePage", new { key = item.Key })" class="btn btn-danger fa fa-trash xs-margin delete del_btn"></button>
+                                            </div>
+                                        </td>
+                                        <td>@item.Professional_Body</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.MembershipNo</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <br />
+                <div>
+                    <h3 id="NewMembership" class="fa fa-plus"> Add New Membership</h3>
+                </div>
+                <br />
+                <div style="display: none" id="AddLines4">
+                    @using (Html.BeginForm("ManageMembership", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "membership_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <h3 class=""> New Membership</h3>
+                        <hr />
+
+                        <input type="hidden" class="input" name="Applicant_No" value="@Model.No" />
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Professional Body</label>
+                                <div class="col-md-12">
+                                    <select name="Professional_Body" class="input" required>
+                                        <option value="">Select</option>
+                                        @foreach (var rel in ViewBag.pm)
+                                        {
+                                            <option value="@rel.Name">@rel.Description</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Membership No</label>
+                                <div class="col-md-12">
+                                    <input name="MembershipNo" type="text" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <br />
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" value="Add Membership" class="btn btn-company btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+                </div>
+            </div>
+            <div id="step-6" class="">
+                <section>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-striped example" style="border:none;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Names</th>
+                                    <th>Designation</th>
+                                    <th>Institution/Company</th>
+                                    <th>Address</th>
+                                    <th>Telephone No</th>
+                                    <th>E Mail</th>
+                                </tr>
+                            </thead>
+                            <tbody id="referrees_tbody" data-delete-url="@Url.Action("RemoveReferee", "HomePage")">
+                                @{
+                                    var index2 = 0;
+                                }
+                                @foreach (var item in Model.Referees)
+                                {
+                                    index2++;
+                                    <tr class="delete_ancestor">
+                                        <td>
+                                            <div class="form-group">
+                                                <button type="submit" data-delete-url="@Url.Action("RemoveReferee", "HomePage", new { key = item.Key })" class="btn btn-danger fa fa-trash xs-margin delete del_btn"></button>
+                                            </div>
+                                        </td>
+                                        <td>@item.Names</td>
+                                        <td>@item.Designation</td>
+                                        <td>@item.Company</td>
+                                        <td>@item.Address</td>
+                                        <td>@item.Telephone_No</td>
+                                        <td>@item.E_Mail</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <br />
+                <div>
+                    <h3 id="NewReferee" class="fa fa-plus"> Add New Referee</h3>
+                </div>
+                <br />
+                <div style="display: none" id="AddLines3">
+                    @using (Html.BeginForm("ManageReferees", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "referrees_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <h3 class="box-title">New Referee</h3>
+                        <hr />
+
+                        <input name="No" value="@Model.No" class="input" type="hidden" />
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Names</label>
+                                <div class="col-md-12">
+                                    <input name="Names" type="text" class="input" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Designation</label>
+                                <div class="col-md-12">
+                                    <input name="Designation" type="text" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Institution/Company</label>
+                                <div class="col-md-12">
+                                    <input name="Company" type="text" class="input" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Address</label>
+                                <div class="col-md-12">
+                                    <input name="Address" type="text" class="input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Telephone No</label>
+                                <div class="col-md-12">
+                                    <input name="Telephone_No" type="text" class="input" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">E_Mail</label>
+                                <div class="col-md-12">
+                                    <input name="E_Mail" type="email" class="input" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <br />
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" value="Add Referee" class="btn btn-company btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+                </div>
+            </div>
+            <div id="step-7" class="">
+                <section>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-striped example" style="border:none;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Hobbies</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="hobbies_tbody" data-delete-url="@Url.Action("RemoveHobby", "HomePage")">
+                                @foreach (var item in Model.Hobbies)
+                                {
+                                    <tr class="delete_ancestor">
+                                        <td>
+                                            <div class="form-group">
+                                                <button type="submit" data-delete-url="@Url.Action("RemoveHobby", "HomePage", new { key = item.Key })" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                            </div>
+                                        </td>
+                                        <td>@item.Hobbies</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <br />
+                <div>
+                    <h3 id="NewHobbies" class="fa fa-plus"> Add New Hobby</h3>
+                </div>
+                <br />
+                <div style="display: none" id="AddLines5">
+                    @using (Html.BeginForm("ManageHobbies", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "hobbies_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <h3 class=""> New Hobby</h3>
+                        <hr />
+
+                        <input name="No" class="input" value="@Model.No" type="hidden" />
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <label class="control-label col-md-12">Hobby</label>
+                                <div class="col-md-12">
+                                    <input name="Hobbies" type="text" class="input" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 a">
+                                <br />
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" value="Add Hobby" class="btn btn-company btn-block" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div id="step-8" class="" data-job-id="@ViewBag.nos" data-applicant-number="@Model.No" )" data-redirect-url="@Url.Action("SubmittedApplications", "HomePage")">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div style="display:none;">
+                            @using (Html.BeginForm("SubmitApplication", "HomePage", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "submitting" }))
+                            {
+                            }
+                        </div>
+                        <br />
+                        <i class="text text-danger">Upload required and any other relevant files then submit</i>
+
+                        @*@foreach (var item in ViewBag.model.Control19)
+                            {
+                                <p>@item.Description</p>
+                            }*@
+                        <br />
+                        <br />
+                        <hr />
+                        <div>
+                            <h3 class="btn btn-succ fa fa-plus NewLine"> Upload File</h3>
+                        </div>
+                        <br />
+                        <div style="display: none" class="AddLines col-md-10">
+                            @using (Html.BeginForm("UploadFiles", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "upload" }))
+                            {
+                                <input type="file" id="fileToUpload" accept="application/pdf" class="input" />
+                                <br />
+                                <br />
+                                <input type="submit" id="fileButton" data-job-id="@ViewBag.nos" data-job-no="@Model.No" value="Upload" class="btn btn-company btn-block btn-lg" />
+                            }
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="col-md-7">
+                        <table class="table table-striped example" style="border:none;">
+                            <thead style="display:none;">
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="cv_tbody" data-delete-url="@Url.Action("RemoveCV", "HomePage")">
+                                @{
+                                    var index8 = 0;
+                                }
+                                @foreach (CV item in ViewBag.uploadlist)
+                                {
+                                    index8++;
+                                    <tr class="delete_ancestor">
+                                        <td>
+                                            <div class="form-group">
+                                                <button type="submit" data-delete-url="@Url.Action("RemoveCV", "HomePage", new { id = item.id })" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                            </div>
+                                        </td>
+                                        <td><a href="@item.Path" class="fancybox">@item.uploadname</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+        $("#upload").submit(function (event) {
+            event.preventDefault();
+
+            //alert("wewew")
+            if (window.FormData == undefined)
+                alert("Error: FormData is undefined");
+
+            else {
+                var fileUpload = $("#fileToUpload").get(0);
+                var files = fileUpload.files;
+
+                var fileData = new FormData();
+
+                fileData.append(files[0].name, files[0]);
+                //alert("kiplekwa")
+
+                var url = $("#fileButton").data("upload-url");
+                var jobid = $("#fileButton").data("job-id");
+                var jobno = $("#fileButton").data("job-no");
+
+                fileData.append("jobno", jobid);
+                fileData.append("applino", jobno);
+
+                $.ajax({
+                    url: $("#upload").attr("action"),
+                    type: 'post',
+                    datatype: 'json',
+                    contentType: false,
+                    processData: false,
+                    async: false,
+                    data: fileData,
+                    success: function (response) {
+                        if (response.status == 1) {
+                            var filePath = response.data.filePath;
+                            var applicantNo = response.data.applicantNo;
+                            var jobNo = response.data.jobNo;
+                            var fileName = response.data.fileName;
+                            var Id = response.data.Id;
+                            var fname = response.data.fname;
+
+                            let message = response.message;
+
+                            var tbody = $("#cv_tbody");
+
+                            var delete_url = tbody.data("delete-url") + "/" + Id;
+
+                            //alert(applicantNo);
+
+                            var new_tr = `
+                                                                                    <tr class="delete_ancestor">
+                                                                                                <td>
+                                                                                                    <div class="form-group">
+                                                                                                        <button type="submit" data-delete-url="${delete_url}" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td><a href="${filePath}"> ${fname}</a></td>
+                                                                                            </tr>`;
+
+                            tbody.append(new_tr);
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "success"
+                            });
+
+                        } else {
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "failed"
+                            });
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        //Add Line Function
+        $('.NewLine').on('click', function (e) {
+            e.preventDefault();
+            $('.AddLines').slideToggle(500);
+        });
+        //Add Line Function
+        $('#NewEducation').on('click', function (e) {
+            e.preventDefault();
+            $('#AddLines0').slideToggle(1000);
+        });
+
+        //Add Line Function
+        $('#NewExperience').on('click', function (e) {
+            e.preventDefault();
+            $('#AddLines11').slideToggle(1000);
+        });
+
+        //Add Line Function
+        $('#NewReferee').on('click', function (e) {
+            e.preventDefault();
+            $('#AddLines3').slideToggle(1000);
+        });
+
+        //Add Line Function
+        $('#NewMembership').on('click', function (e) {
+            e.preventDefault();
+            $('#AddLines4').slideToggle(1000);
+        });
+
+        //Add Line Function
+        $('#NewHobbies').on('click', function (e) {
+            e.preventDefault();
+            $('#AddLines5').slideToggle(1000);
+        });
+
+        //Add Line Function
+        $('#NewProfessional').on('click', function (e) {
+            e.preventDefault();
+            $('#AddLines').slideToggle(1000);
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        function checkTable() {
+
+            let elem = $(".sw-container .step-content:visible");
+
+
+            if (elem.length == 1 && (elem.attr("id") === "step-1" || elem.attr("id") === "step-2" || elem.attr("id") === "step-3")) {
+                var tables = elem.find("table");
+
+
+                if (tables.length > 0) {
+                    //var table = tables[0];
+
+                    var tableRowsCount = tables.find("tbody tr").length
+
+                    console.log(tableRowsCount)
+
+                    if (tableRowsCount == 0) {
+                        $(".sw-btn-next").attr("disabled", true);
+                    } else {
+                        $(".sw-btn-next").attr("disabled", false);
+                    }
+                }
+            }
+        }
+
+
+        function checkTableSteps(stepId) {
+
+            let id = stepId + 2;
+
+            let elem = $(`#step-${id}`);
+
+
+            var tables = elem.find("table");
+
+
+            if (tables.length > 0) {
+
+                var tableRowsCount = tables.find("tbody tr").length
+
+
+                //if (tableRowsCount == 0) {
+                //    $(".sw-btn-next").attr("disabled", true);
+                //} else {
+                //    $(".sw-btn-next").attr("disabled", false);
+                //}
+            }
+        }
+
+
+        $(window).on("load", function () {
+            checkTable();
+        });
+
+
+
+
+        $(function () {
+            $('#education').on('change', function () {
+                var stateDropdown = $('#level');
+                var stateDropdownq = $('#proficiency');
+                var stateDropdown1 = $('#description');
+                var hide1 = $('#hide1');
+                var hide2 = $('#hide2');
+                var stateDropdown2 = $('#grade');
+                var optionvalue = $("#education").val();
+                if (optionvalue.length > 0) {
+                    if ($('#education').val() == 'Primary' || $('#education').val() == 'High_School' || $('#education').val() == null) {
+                        stateDropdown.prop('disabled', 'disabled');
+                        stateDropdownq.attr('disabled', 'disabled');
+                        hide1.fadeIn(500);
+                        hide2.fadeIn(500);
+                        //stateDropdown1.removeAttr("disabled");
+                        //stateDropdown2.removeAttr("disabled");
+                    } else {
+                        stateDropdown.removeAttr("disabled");
+                        stateDropdownq.removeAttr("disabled");
+                        hide1.fadeOut(500);
+                        hide2.fadeOut(500);
+                    }
+                }
+            });
+            $("#education").trigger("change");
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#level').on('change', function() {
+                var stateDropdown = $('#fos');
+                //disable state drop down
+                stateDropdown.prop('disabled', 'disabled');
+                //clear drop down of old states
+                stateDropdown.empty();
+
+                //retrieve selected country
+                var optionvalue = $(this).val();
+                if (optionvalue.length > 0) {
+                    // retrieve data using a Url.Action() to construct url
+                    $.getJSON('@Url.Action("GetStates")', {
+                        uoption: optionvalue
+                    })
+                    .done(function (data) {
+                        //re-enable state drop down
+                        stateDropdown.removeAttr('disabled');
+                        //for each returned state
+                        stateDropdown.prepend("<option value=' ' selected='selected'>Select</option>");
+                        $.each(data, function (i, fos) {
+                            //Create new option
+                            var option = $('<option />').html(fos);
+                            //append state states drop down
+                            stateDropdown.append(option);
+                        });
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        var err = textStatus + ", " + error;
+                        console.log("Request Failed: " + err);
+                    });
+                }
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#fos').on('change', function() {
+                var stateDropdown = $('#qc');
+                //disable state drop down
+                stateDropdown.prop('disabled', 'disabled');
+                //clear drop down of old states
+                stateDropdown.empty();
+
+                //retrieve selected country
+                var optionvalue = $(this).val();
+                var optionvalue1 = $("#level").val();
+                if (optionvalue.length > 0) {
+                    // retrieve data using a Url.Action() to construct url
+                    $.getJSON('@Url.Action("GetStates1")', {
+                        uoption: optionvalue,
+                        uoption1: optionvalue1
+                    })
+                    .done(function (data) {
+                        //re-enable state drop down
+                        stateDropdown.removeAttr('disabled');
+                        //for each returned state
+                        stateDropdown.prepend("<option value=' ' selected='selected'>Select</option>");
+                        $.each(data, function (i, qc) {
+                            //Create new option
+                            var option = $('<option />').html(qc);
+                            //append state states drop down
+                            stateDropdown.append(option);
+                        });
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        var err = textStatus + ", " + error;
+                        console.log("Request Failed: " + err);
+                    });
+                }
+            });
+        })
+    </script>
+    <script>
+
+        function submitApplication() {
+
+            var fileData = new FormData();
+
+            let holder = $("#step-8");
+
+            let jobId = holder.data("job-id");
+            let appNo = holder.data("applicant-number");
+            let redirect_url = holder.data("redirect-url");
+
+            var url = $("#fileButton").data("upload-url");
+            var jobid = $("#fileButton").data("job-id");
+            var jobno = $("#fileButton").data("job-no");
+
+            fileData.append("jobId", jobId);
+            fileData.append("applicationNo", appNo);
+
+            $.ajax({
+                type: 'POST',
+                url: $("#submitting").attr("action"),
+                data: fileData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    var message = response.message;
+                    if (response.status == 1) {
+                        window.location.href = redirect_url;
+                    } else {
+                        swal({
+                            title: "Message",
+                            text: message,
+                            type: "error"
+                        });
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+
+            //SMART WIZARD
+            var btnFinish = $('<button></button>').text('SUBMIT')
+                .addClass('btn btn-navigation sw-btn-group-extra d-none')
+                .on('click', submitApplication);
+
+            //smart wizard configurations
+            var wizard = $('#smartwizard').smartWizard({
+                selected: 0, // Initial selected step, 0 = first step
+                theme: 'arrows', // theme for the wizard, related css need to include for other than default theme
+                justified: true, // Nav menu justification. true/false
+                darkMode: false, // Enable/disable Dark Mode if the theme supports. true/false
+                autoAdjustHeight: true, // Automatically adjust content height
+                cycleSteps: false, // Allows to cycle the navigation of steps
+                backButtonSupport: true, // Enable the back button support
+                enableURLhash: false, // Enable selection of the step based on url hash
+                transition: {
+                    animation: 'none', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
+                    speed: '400', // Transion animation speed
+                    easing: '' // Transition animation easing. Not supported without a jQuery easing plugin
+                },
+                toolbarSettings: {
+                    toolbarPosition: 'bottom', // none, top, bottom, both
+                    toolbarButtonPosition: 'right', // left, right, center
+                    showNextButton: true, // show/hide a Next button
+                    showPreviousButton: true, // show/hide a Previous button
+                    toolbarExtraButtons: [btnFinish] // Extra buttons to show on toolbar, array of jQuery input/buttons elements
+                },
+                anchorSettings: {
+                    anchorClickable: false, // Enable/Disable anchor navigation
+                    enableAllAnchors: false, // Activates all anchors clickable all times
+                    markDoneStep: true, // Add done state on navigation
+                    markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
+                    removeDoneStepOnNavigateBack: false, // While navigate back done step after active step will be cleared
+                    enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+                },
+                keyboardSettings: {
+                    keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
+                    keyLeft: [37], // Left key code
+                    keyRight: [39] // Right key code
+                },
+                lang: { // Language variables for button
+                    next: 'Next',
+                    previous: 'Previous'
+                },
+                disabledSteps: [], // Array Steps disabled
+                errorSteps: [], // Highlight step with errors
+                hiddenSteps: [], // Hidden steps
+            });
+
+            //The code for the final step
+            $(wizard).on("leaveStep", function (e, anchorObject, stepNumber, stepDirection) {
+                console.log(stepNumber);
+                if (stepNumber == "6" && stepDirection === "forward") //here is the final step: Note: 0,1,2
+                {
+                    $('.sw-btn-group-extra').removeClass('d-none');
+                }
+                else {
+                    $('.sw-btn-group-extra').addClass('d-none');
+                }
+
+                if (stepDirection === "forward") {
+                    checkTableSteps(stepNumber);
+                } else {
+                    $(".sw-btn-next").attr("disabled", false);
+                }
+            });
+
+
+            window.onload = function () {
+                $(".sw-btn-next").addClass("btn-navigation");
+                $(".sw-btn-prev").addClass("btn-navigation");
+                var last_step = $("#step-8");
+
+                if (last_step.length == 1) {
+                    if (last_step.is(":visible")) {
+                        $('.sw-btn-group-extra').removeClass('d-none');
+                    } else {
+                        $('.sw-btn-group-extra').addClass('d-none');
+                    }
+                }
+            }
+
+
+            //SMART WIZARD END
+
+            //Add to referee controller
+            $("#referrees_form").validate({
+                invalidHadler: function (form, e) {
+                    e.preventDefault();
+                    alert("invlid...")
+                },
+                submitHandler: function (form, e) {
+                    e.preventDefault();
+
+                    var fd = new FormData();
+                    $("#referrees_form").find(".input").each(function (e) {
+
+                        let val = $(this).val();
+                        let name = $(this).attr("name");
+
+                        fd.append(name, val);
+                    });
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: $("#referrees_form").attr("action"),
+                        data: fd,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+
+                            var message = data.message;
+                            var status = data.status;
+
+                            if (status == 1) {
+                                var data = data.data;
+
+
+                                var names = data.names;
+                                var designation = data.designation;
+                                var company = data.company;
+                                var address = data.address;
+                                var tel = data.tel;
+                                var email = data.email;
+                                var key = data.key;
+
+                                var tbody = $("#referrees_tbody");
+
+                                var delete_url = tbody.data("delete-url") + "?key=" + key;
+
+                                var new_el = `
+                                                                                    <tr class="delete_ancestor">
+                                                                                            <td>
+                                                                                                <div class="form-group">
+                                                                                                    <button type="submit" data-delete-url="${delete_url}" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>${names}</td>
+                                                                                            <td>${designation}</td>
+                                                                                            <td>${company}</td>
+                                                                                            <td>${address}</td>
+                                                                                            <td>${tel}</td>
+                                                                                            <td>${email}</td>
+                                                                                        </tr>
+                                                                                `;
+
+                                tbody.append(new_el);
+
+                                $("#referrees_form")[0].reset();
+                                $('#AddLines3').slideUp(1000);
+
+                                swal({
+                                    title: "Message",
+                                    text: message,
+                                    type: "success"
+                                });
+                            } else {
+
+                                swal({
+                                    title: "Message",
+                                    text: message,
+                                    type: "error"
+                                });
+
+                            }
+                        },
+                        error: function (data) {
+                            var message = data.message;
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+                        }
+                    });
+
+                }
+            });
+
+            //Add to referee controller
+            $("#profile_form").validate({
+                invalidHadler: function (form, e) {
+                    e.preventDefault();
+                    alert("invlid...")
+                },
+                submitHandler: function (form, e) {
+                    e.preventDefault();
+
+                    var fd = new FormData();
+                    $("#profile_form").find(".input").each(function (e) {
+
+                        let val = $(this).val();
+                        let name = $(this).attr("name");
+
+                        fd.append(name, val);
+                    });
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: $("#profile_form").attr("action"),
+                        data: fd,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            var message = data.message;
+                            var status = data.status;
+
+                            if (status == 1) {
+                                var data = data.data;
+
+                                var key = data.key;
+
+                                swal({
+                                    title: "Message",
+                                    text: message,
+                                    type: "success"
+                                });
+
+
+
+
+
+
+                            //var message = data.message;
+                            //var status = data.status;
+
+                            //if (status == 1) {
+                            //    var data = data.data;
+
+
+                            //    var names = data.names;
+                            //    var designation = data.designation;
+                            //    var company = data.company;
+                            //    var address = data.address;
+                            //    var tel = data.tel;
+                            //    var email = data.email;
+                            //    var key = data.key;
+
+
+                                //var tbody = $("#referrees_tbody");
+
+                                //var delete_url = tbody.data("delete-url") + "?key=" + key;
+
+                                //var new_el = `
+                                //                    <tr class="delete_ancestor">
+                                //                            <td>
+                                //                                <div class="form-group">
+                                //                                    <button type="submit" data-delete-url="${delete_url}" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                //                                </div>
+                                //                            </td>
+                                //                            <td>${names}</td>
+                                //                            <td>${designation}</td>
+                                //                            <td>${company}</td>
+                                //                            <td>${address}</td>
+                                //                            <td>${tel}</td>
+                                //                            <td>${email}</td>
+                                //                        </tr>
+                                //                `;
+
+                                //tbody.append(new_el);
+
+                                //$("#profile_form")[0].reset();
+
+                                //swal({
+                                //    title: "Message",
+                                //    text: message,
+                                //    type: "success"
+                                //});
+
+                            } else {
+
+                                swal({
+                                    title: "Message",
+                                    text: message,
+                                    type: "error"
+                                });
+
+                            }
+                        },
+                        error: function (data) {
+                            var message = data.message;
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+                        }
+                    });
+
+                }
+            });
+
+            $(".del_btn").on("click", function (e) {
+
+                let url = $(this).data("delete-url");
+
+                let parent = $(this).closest(".delete_ancestor");
+
+                $.post(
+                    url,
+                    {},
+                    function (data, status) {
+
+                        if (status === "success") {
+
+                        let operation_status = data.status;
+                        let message = data.message;
+
+                        if (operation_status == 1) {
+                            if (parent.length > 0) {
+                                parent.remove();
+                            }
+
+                            checkTable();
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "success"
+                            });
+                        } else {
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+                        }
+                        }
+
+                        //if (status == 1) {
+                        //    if (parent.length > 0) {
+                        //        parent.remove();
+                        //    }
+
+                        //    checkTable();
+
+                        //    swal({
+                        //        title: "Message",
+                        //        text: message,
+                        //        type: "success"
+                        //    });
+
+                        //} else {
+                        //    swal({
+                        //        title: "Message",
+                        //        text: message,
+                        //        type: "error"
+                        //    });
+                        //}
+                    }
+                )
+
+            })
+
+            //Add to referee controller
+            $("#hobbies_form").validate({
+                invalidHadler: function (form, e) {
+                    e.preventDefault();
+                    alert("invlid...")
+                },
+                submitHandler: function (form, e) {
+                    e.preventDefault();
+
+                    var fd = new FormData();
+                    $("#hobbies_form").find(".input").each(function (e) {
+
+                        let val = $(this).val();
+                        let name = $(this).attr("name");
+
+                        fd.append(name, val);
+                    });
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: $("#hobbies_form").attr("action"),
+                        data: fd,
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+
+                            var message = data.message;
+                            var status = data.status;
+
+                            if (status == 1) {
+                                var data = data.data;
+
+
+                                var hobbies = data.hobbies;
+                                var key = data.key;
+
+                                var tbody = $("#hobbies_tbody");
+
+                                var delete_url = tbody.data("delete-url") + "?key=" + key;
+
+                                var new_el = `
+                                                                                    <tr class="delete_ancestor">
+                                                                                            <td>
+                                                                                                <div class="form-group">
+                                                                                                    <button type="submit" data-delete-url="${delete_url}" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>${hobbies}</td>
+                                                                                        </tr>
+                                                                                `;
+
+                                tbody.append(new_el);
+
+                                $("#hobbies_form")[0].reset();
+                                $('#AddLines5').slideUp(1000);
+
+                                swal({
+                                    title: "Message",
+                                    text: message,
+                                    type: "success"
+                                });
+                            } else {
+
+                                swal({
+                                    title: "Message",
+                                    text: message,
+                                    type: "error"
+                                });
+
+                            }
+                        },
+                        error: function (data) {
+                            var message = data.message;
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+                        }
+                    });
+
+                }
+            });
+
+
+        });
+
+        function del_func(el) {
+
+            let url = $(el).data("delete-url");
+
+            let parent = $(el).closest(".delete_ancestor");
+
+            $.post(
+                url,
+                {},
+                function (data, status) {
+                    if (status === "success") {
+
+                        let operation_status = data.status;
+                        let message = data.message;
+
+                        if (operation_status == 1) {
+                            if (parent.length > 0) {
+                                parent.remove();
+                            }
+
+                            checkTable();
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "success"
+                            });
+                        } else {
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+                        }
+
+                    } else {
+                        swal({
+                            title: "Message",
+                            text: message,
+                            type: "error"
+                        });
+                    }
+                }
+            )
+
+        }
+
+        //Add to professional controller
+        $("#professional_form").validate({
+            invalidHadler: function (form, e) {
+                e.preventDefault();
+                alert("invalid...")
+            },
+            submitHandler: function (form, e) {
+                e.preventDefault();
+
+                var fd = new FormData();
+                $("#professional_form").find(".input").each(function (e) {
+
+                    let val = $(this).val();
+                    let name = $(this).attr("name");
+
+                    fd.append(name, val);
+                });
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: $("#professional_form").attr("action"),
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+
+                        var message = data.message;
+                        var status = data.status;
+
+                        if (status == 1) {
+                            var data = data.data;
+
+                            var qualification_Code = data.qualification_Code;
+                            var qualification_Name = data.qualification_Name;
+                            var section_Level = data.section_Level;
+                            var key = data.key;
+
+                            var tbody = $("#professional_tbody");
+
+                            var delete_url = tbody.data("delete-url") + "?key=" + key;
+
+                            var new_el = `
+                                                                                    <tr class="delete_ancestor">
+                                                                                            <td>
+                                                                                                <div class="form-group">
+                                                                                                    <button type="submit" data-delete-url="${delete_url}" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>${qualification_Code}</td>
+                                                                                            <td>${qualification_Name}</td>
+                                                                                            <td>${section_Level}</td>
+                                                                                        </tr>
+                                                                                `;
+
+                            tbody.append(new_el);
+
+                            $("#professional_form")[0].reset();
+                            $('#AddLines').slideUp(1000);
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "success"
+                            });
+                        } else {
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+
+                        }
+                    },
+                    error: function (data) {
+                        var message = data.message;
+
+                        swal({
+                            title: "Message",
+                            text: message,
+                            type: "error"
+                        });
+                    }
+                });
+            }
+        });
+
+        //Add to professional controller
+        $("#membership_form").validate({
+            invalidHadler: function (form, e) {
+                e.preventDefault();
+                alert("invalid...")
+            },
+            submitHandler: function (form, e) {
+                e.preventDefault();
+
+                var fd = new FormData();
+                $("#membership_form").find(".input").each(function (e) {
+
+                    let val = $(this).val();
+                    let name = $(this).attr("name");
+
+                    fd.append(name, val);
+                });
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: $("#membership_form").attr("action"),
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+
+                        var message = data.message;
+                        var status = data.status;
+
+                        if (status == 1) {
+                            var data = data.data;
+
+                            var professional_Body = data.professional_Body;
+                            var description = data.description;
+                            var membershipNo = data.membershipNo;
+                            var key = data.key;
+
+                            var tbody = $("#membership_tbody");
+
+                            var delete_url = tbody.data("delete-url") + "?key=" + key;
+
+                            var new_el = `
+                                                                                    <tr class="delete_ancestor">
+                                                                                            <td>
+                                                                                                <div class="form-group">
+                                                                                                    <button type="submit" data-delete-url="${delete_url}" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>${professional_Body}</td>
+                                                                                            <td>${description}</td>
+                                                                                            <td>${membershipNo}</td>
+                                                                                        </tr>
+                                                                                `;
+
+                            tbody.append(new_el);
+
+                            $("#membership_form")[0].reset();
+                            $('#AddLines4').slideUp(1000);
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "success"
+                            });
+                        } else {
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+
+                        }
+                    },
+                    error: function (data) {
+                        var message = data.message;
+
+                        swal({
+                            title: "Message",
+                            text: message,
+                            type: "error"
+                        });
+                    }
+                });
+            }
+        });
+
+        function del_func5(el) {
+
+            let url = $(el).data("delete-url");
+
+            let parent = $(el).closest(".delete_ancestor");
+
+
+
+            $.post(
+                url,
+                {},
+                function (data, status) {
+                    if (status === "success") {
+
+                        if (parent.length > 0) {
+                            parent.remove();
+                        }
+
+                    } else {
+                        swal({
+                            title: "Message",
+                            text: message,
+                            type: "error"
+                        });
+                    }
+                }
+            )
+
+        }
+
+        $(".del_btns").on("click", function (e) {
+
+            let url = $(this).data("delete-url");
+
+            let parent = $(this).closest(".delete_ancestor");
+
+            $.post(
+                url,
+                {},
+                function (data, status) {
+                    if (status === "success") {
+                        if (parent.length > 0) {
+                            parent.remove();
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed!',
+                            text: "Error deleting"
+                        });
+                    }
+                }
+            )
+
+        })
+
+        //Add to education_form controller
+        $("#education_form").validate({
+            invalidHadler: function (form, e) {
+                e.preventDefault();
+                alert("invalid...")
+            },
+            submitHandler: function (form, e) {
+                e.preventDefault();
+
+                var fd = new FormData();
+                $("#education_form").find(".input").each(function (e) {
+
+                    let val = $(this).val();
+                    let name = $(this).attr("name");
+
+                    fd.append(name, val);
+                });
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: $("#education_form").attr("action"),
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+
+                        var message = data.message;
+                        var status = data.status;
+
+                        if (status == 1) {
+                            var data = data.data;
+
+                            var start_Date = data.start_Date;
+                            var end_Date = data.end_Date;
+                            var education_Type = data.education_Type;
+                            var field_of_Study = data.field_of_Study;
+                            var qualification_Code = data.qualification_Code;
+                            var qualification_Name = data.qualification_Name;
+                            var institution_Name = data.institution_Name;
+                            var proficiency_Level = data.proficiency_Level;
+                            var country = data.country;
+                            var region = data.region;
+                            var professional_Body = data.professional_Body;
+                            var description = data.description;
+                            var grade = data.grade;
+                            var key = data.key;
+
+                            var tbody = $("#education_tbody");
+
+                            var delete_url = tbody.data("delete-url") + "?key=" + key;
+
+                            var new_el = `
+                                                                                    <tr class="delete_ancestor">
+                                                                                            <td>
+                                                                                                <div class="form-group">
+                                                                                                    <button type="submit" data-delete-url="${delete_url}" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>${start_Date}</td>
+                                                                                            <td>${end_Date}</td>
+                                                                                            @*<td>${education_Type}</td>
+                                                                                            //<td>${field_of_Study}</td>
+                                                                                            //<td>${qualification_Code}</td>
+                                                                                            <td>${qualification_Name}</td>*@
+                                                                                            <td>${institution_Name}</td>
+                                                                                            @*//<td>${proficiency_Level}</td>*@
+                                                                                            <td>${country}</td>
+                                                                                            @*//<td>${region}</td>
+                                                                                            //<td>${description}</td>
+                                                                                            //<td>${professional_Body}</td>
+                                                                                            //<td>${grade}</td>*@
+                                                                                        </tr>
+                                                                                `;
+
+                            tbody.append(new_el);
+
+                            $("#education_form")[0].reset();
+                            $('#AddLines0').slideUp(1000);
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "success"
+                            });
+                        } else {
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+
+                        }
+                    },
+                    error: function (data) {
+                        var message = data.message;
+
+                        swal({
+                            title: "Message",
+                            text: message,
+                            type: "error"
+                        });
+                    }
+                });
+            }
+        });
+
+        $(".del_btn1").on("click", function (e) {
+
+            let url = $(this).data("delete-url");
+
+            let parent = $(this).closest(".delete_ancestor");
+
+            $.post(
+                url,
+                {},
+                function (data, status) {
+                    if (status === "success") {
+                        if (parent.length > 0) {
+                            parent.remove();
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed!',
+                            text: "Error deleting"
+                        });
+                    }
+                }
+            )
+
+        })
+
+        function del_func1(el) {
+
+            let url = $(el).data("delete-url");
+
+            let parent = $(el).closest(".delete_ancestor");
+
+
+
+            $.post(
+                url,
+                {},
+                function (data, status) {
+                    if (status === "success") {
+
+                        if (parent.length > 0) {
+                            parent.remove();
+                        }
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed!',
+                            text: "Error deleting"
+                        });
+                    }
+                }
+            )
+
+        }
+
+        //Add to education_form controller
+        $("#work_form").validate({
+            invalidHadler: function (form, e) {
+                e.preventDefault();
+                alert("invalid...")
+            },
+            submitHandler: function (form, e) {
+                e.preventDefault();
+
+                var fd = new FormData();
+                $("#work_form").find(".input").each(function (e) {
+
+                    let val = $(this).val();
+                    let name = $(this).attr("name");
+
+                    fd.append(name, val);
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: $("#work_form").attr("action"),
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+
+                        var message = data.message;
+                        var status = data.status;
+
+                        if (status == 1) {
+                            var data = data.data;
+
+                            var start_Date = data.start_Date;
+                            var end_Date = data.end_Date;
+                            var employer = data.employer;
+                            var industry = data.industry;
+                            var hierarchy_Level = data.hierarchy_Level;
+                            var functional_Area = data.functional_Area;
+                            var job_Title = data.job_Title;
+                            var no_of_Years = data.no_of_Years;
+                            var country = data.country;
+                            var location = data.location;
+                            var employer_Email_Address = data.employer_Email_Address;
+                            var description = data.description;
+                            var employer_Postal_Address = data.employer_Postal_Address;
+                            var key = data.key;
+
+                            var tbody = $("#work_tbody");
+
+                            var delete_url = tbody.data("delete-url") + "?key=" + key;
+
+                            var new_el = `
+                                                                                    <tr class="delete_ancestor">
+                                                                                            <td>
+                                                                                                <div class="form-group">
+                                                                                                    <button type="submit" data-delete-url="${delete_url}" class="btn btn-danger fa fa-trash xs-margin delete del_btn" onclick="del_func(this)"></button>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>${start_Date}</td>
+                                                                                            <td>${end_Date}</td>
+                                                                                            <td>${employer}</td>
+                                                                                            @*<td>${industry}</td>
+                                                                                            <td>${hierarchy_Level}</td>
+                                                                                            <td>${functional_Area}</td>*@
+                                                                                            <td>${job_Title}</td>
+                                                                                            <td>${no_of_Years}</td>
+                                                                                            <td>${country}</td>
+                                                                                            @*<td>${description}</td>
+                                                                                            <td>${employer_Email_Address}</td>
+                                                                                            <td>${employer_Postal_Address}</td>*@
+                                                                                        </tr>
+                                                                                `;
+
+                            tbody.append(new_el);
+
+                            $("#work_form")[0].reset();
+                            $('#AddLines11').slideUp(1000);
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "success"
+                            });
+                        } else {
+
+                            swal({
+                                title: "Message",
+                                text: message,
+                                type: "error"
+                            });
+
+                        }
+                    },
+                    error: function (data) {
+                        var message = data.message;
+
+                        swal({
+                            title: "Message",
+                            text: message,
+                            type: "error"
+                        });
+                    }
+                });
+            }
+        });
+
+        function del_func2(el) {
+
+            let url = $(el).data("delete-url");
+
+            let parent = $(el).closest(".delete_ancestor");
+
+
+
+            $.post(
+                url,
+                {},
+                function (data, status) {
+                    if (status === "success") {
+
+                        if (parent.length > 0) {
+                            parent.remove();
+                        }
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed!',
+                            text: "Error deleting"
+                        });
+                    }
+                }
+            )
+
+        }
+
+    </script>
+
+}

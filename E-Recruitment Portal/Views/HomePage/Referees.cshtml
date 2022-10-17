@@ -1,0 +1,150 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+@{
+    ViewBag.Title = "Referees";
+}
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @{
+                Html.RenderPartial("_Sidebar");
+            }
+        </div>
+        <br />
+        <div class="col-md-9">
+            <style>
+                table, tr, th, td {
+                    border: none;
+                }
+
+                option:hover {
+                    background-color: #E33237;
+                }
+            </style>
+            <div class="box-header with-border">
+                <h4 class="box-title"> REFEREES </h4>
+                <div class="box-tools pull-right">
+                </div>
+            </div>
+            <section>
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped" style="border:none;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Names</th>
+                                <th>Designation</th>
+                                <th>Institution/Company</th>
+                                <th>Address</th>
+                                <th>Telephone No</th>
+                                <th>E_Mail</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{
+                                var index = 0;
+                            }
+                            @foreach (var item in Model.Referees)
+                            {
+                                index++;
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @using (Html.BeginForm("RemoveReferee", "HomePage", new { key = item.Key }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-danger fa fa-trash xs-margin delete"></button>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@item.Names</td>
+                                    <td>@item.Designation</td>
+                                    <td>@item.Company</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Telephone_No</td>
+                                    <td>@item.E_Mail</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <br />
+            <div>
+                <h3 id="NewReferee" class="fa fa-plus"> Add New Referee</h3>
+            </div>
+            <br />
+            <div hidden id="AddLine">
+                @using (Html.BeginForm("ManageReferees", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <h3 class="box-title">New Referee</h3>
+                    <hr />
+
+                    <input name="No" value="@Model.No" type="hidden" />
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Names</label>
+                            <div class="col-md-12">
+                                <input name="Names" type="text" class="input" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Designation</label>
+                            <div class="col-md-12">
+                                <input name="Designation" type="text" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Institution/Company</label>
+                            <div class="col-md-12">
+                                <input name="Company" type="text" class="input" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Address</label>
+                            <div class="col-md-12">
+                                <input name="Address" type="text" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Telephone No</label>
+                            <div class="col-md-12">
+                                <input name="Telephone_No" type="text" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">E_Mail</label>
+                            <div class="col-md-12">
+                                <input name="E_Mail" type="email" class="input" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <input type="submit" value="Add Referee" class="btn btn-succ btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<br />
+<script src="~/Scripts/Default/home.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

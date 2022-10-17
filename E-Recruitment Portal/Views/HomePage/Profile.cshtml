@@ -1,0 +1,217 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+@{
+    ViewBag.Title = "Profile";
+    //Layout = null;
+}
+
+
+@using (Html.BeginForm("ManageProfile", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <input name="No" value="@Model.No" type="hidden" />
+    <div class="row">
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">First Name</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "input", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">Middle Name</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Middle_Name, new { htmlAttributes = new { @class = "input", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.Middle_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">Last Name</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "input", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">ID Number</label>
+            <div class="col-md-12">
+                <a href="~/Views/HomePage/Professional.cshtml">~/Views/HomePage/Professional.cshtml</a>
+                @Html.EditorFor(model => model.ID_Number, new { htmlAttributes = new { @class = "input" } })
+                @Html.ValidationMessageFor(model => model.ID_Number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 a">
+            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @{
+                    List<SelectListItem> llistItem = new List<SelectListItem>();
+                    llistItem.Add(new SelectListItem
+                    {
+                        Text = "Male",
+                        Value = "Male"
+                    });
+                    llistItem.Add(new SelectListItem
+                    {
+                        Text = "Female",
+                        Value = "Female"
+                    });
+                }
+                @Html.DropDownListFor(model => model.Gender, llistItem, "", new { @class = "input" })
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 a">
+            @Html.LabelFor(model => model.Citizenship, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.Citizenship, (IEnumerable<SelectListItem>)ViewBag.countries, "Choose...", new { @class = "input" })
+                @Html.ValidationMessageFor(model => model.Citizenship, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">Marital Status</label>
+            <div class="col-md-12">
+                @{
+                    List<SelectListItem> llistItem1 = new List<SelectListItem>();
+                    llistItem1.Add(new SelectListItem
+                    {
+                        Text = "Single",
+                        Value = "Single"
+                    });
+                    llistItem1.Add(new SelectListItem
+                    {
+                        Text = "Married",
+                        Value = "Married"
+                    });
+                    llistItem1.Add(new SelectListItem
+                    {
+                        Text = "Separated",
+                        Value = "Separated"
+                    });
+                    llistItem1.Add(new SelectListItem
+                    {
+                        Text = "Divorced",
+                        Value = "Divorced"
+                    });
+                    llistItem1.Add(new SelectListItem
+                    {
+                        Text = "Widow(er)",
+                        Value = "Widow_er"
+                    });
+                    llistItem1.Add(new SelectListItem
+                    {
+                        Text = "Other",
+                        Value = "Other"
+                    });
+                }
+                @Html.DropDownListFor(model => model.Marital_Status, llistItem1, "", new { @class = "input" })
+                @Html.ValidationMessageFor(model => model.Marital_Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 a">
+            @Html.LabelFor(model => model.Disabled, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-12">
+                @{
+                    List<SelectListItem> llistItem2 = new List<SelectListItem>();
+                    llistItem2.Add(new SelectListItem
+                    {
+                        Text = "No",
+                        Value = "No"
+                    });
+                    llistItem2.Add(new SelectListItem
+                    {
+                        Text = "Yes",
+                        Value = "Yes"
+                    });
+                }
+                @Html.DropDownListFor(model => model.Disabled, llistItem2, "", new { @class = "input" })
+                @Html.ValidationMessageFor(model => model.Disabled, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">Date Of Birth</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Date_Of_Birth, new { htmlAttributes = new { @class = "input", @Value = @Model.Date_Of_Birth.ToShortDateString() } })
+                @Html.ValidationMessageFor(model => model.Date_Of_Birth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">Phone Number</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Cellular_Phone_Number, new { htmlAttributes = new { @class = "input" } })
+                @Html.ValidationMessageFor(model => model.Cellular_Phone_Number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">E-Mail</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.E_Mail, new { htmlAttributes = new { @class = "input", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.E_Mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">Postal Address</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Postal_Address, new { htmlAttributes = new { @class = "input" } })
+                @Html.ValidationMessageFor(model => model.Postal_Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 a">
+            <label class="control-label col-md-12">Post Code</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Post_Code, new { htmlAttributes = new { @class = "input" } })
+                @Html.ValidationMessageFor(model => model.Post_Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @if (Model == null)
+        {
+            <div class="col-md-4 a">
+                <br />
+                <br />
+                <div class="col-md-12">
+                    <input type="submit" value="Create Profile" class="btn btn-success btn-block" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-4 a">
+                <br />
+                <br />
+                <div class="col-md-12">
+                    <input type="submit" value="Manage Profile" class="btn btn-success btn-block" />
+                </div>
+            </div>
+        }
+
+    </div>
+    <br />
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+
+        });
+    </script>
+
+} 

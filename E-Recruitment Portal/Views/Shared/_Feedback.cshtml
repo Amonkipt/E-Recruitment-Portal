@@ -1,0 +1,89 @@
+﻿@{
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    if (TempData["Success"] != null)
+    {
+        <script>
+            var alertmsg = '';
+            if ('@(TempData["Success"])' != null && '@(TempData["Success"])' != '') {
+                alertmsg = '@(TempData["Success"])';
+            }
+            ShowErrorPopup(alertmsg);
+            function ShowErrorPopup(msg) {
+                if (msg != null && msg != '') {
+                    var msgarray = msg.split(',');
+
+                     swal({
+                            title: "Message",
+                            text: msgarray[0],
+                            type: "success"
+                        });
+                }
+            };
+        </script>
+    }
+    else if (TempData["failed"] != null)
+    {
+        <script>
+            var alertmsg = '';
+            if ('@(TempData["failed"])' != null && '@(TempData["failed"])' != '') {
+                alertmsg = '@(TempData["failed"])';
+            }
+            ShowErrorPopup(alertmsg);
+            function ShowErrorPopup(msg) {
+                if (msg != null && msg != '') {
+                    var msgarray = msg.split(',');
+
+                     swal({
+                            title: "Message",
+                            text: msgarray[0],
+                            type: "error"
+                        });
+                }
+            };
+        </script>
+    }
+    else if (TempData["info"] != null)
+    {
+        <script>
+            var alertmsg = '';
+            if ('@(TempData["info"])' != null && '@(TempData["info"])' != '') {
+                alertmsg = '@(TempData["info"])';
+            }
+            ShowErrorPopup(alertmsg);
+            function ShowErrorPopup(msg) {
+                if (msg != null && msg != '') {
+                    var msgarray = msg.split(',');
+
+                     swal({
+                            title: "Message",
+                            text: msgarray[0],
+                            type: "info"
+                        });
+                }
+            };
+        </script>
+    }
+    else if (TempData["warning"] != null)
+    {
+        <script>
+            var alertmsg = '';
+            if ('@(TempData["warning"])' != null && '@(TempData["warning"])' != '') {
+                alertmsg = '@(TempData["warning"])';
+            }
+            ShowErrorPopup(alertmsg);
+            function ShowErrorPopup(msg) {
+                if (msg != null && msg != '') {
+                    var msgarray = msg.split(',');
+
+                     swal({
+                            title: "Message",
+                            text: msgarray[0],
+                            type: "warning"
+                        });
+                }
+            };
+        </script>
+    }
+}

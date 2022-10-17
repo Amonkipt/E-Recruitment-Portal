@@ -1,0 +1,85 @@
+﻿@model IEnumerable<E_Recruitment_Portal.Recruitment.Recruitment>
+
+@{
+    ViewBag.Title = "Open Applications";
+}
+
+<style>
+    .topnav input[type=text] {
+        padding: 6px;
+        border: none;
+        font-size: 17px;
+    }
+
+    .titles li {
+        display: inline;
+        padding: 5px;
+        float: left;
+        width: auto;
+    }
+
+    .btn-dako {
+        background-color: #2E354E;
+        color: #FFFFFF;
+    }
+
+    .btn-rd {
+        border: 1px solid #FFFFFF;
+    }
+
+        .btn-rd:hover {
+            border: 1px solid #FFFFFF;
+            background-color: #1A1A1A;
+        }
+</style>
+<br />
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <p>@Html.ActionLink("Home Page", "OpenApplications", "HomePage")</p>
+        </li>
+        <li class="breadcrumb-item active">@ViewBag.Title</li>
+    </ol>
+    <h4 class="text-left in"><b><u clas style="color:#2E354E">LATEST JOBS</u></b></h4>
+    <div class="table-responsive">
+        <table id="example" class="table table-striped" style="border: none;">
+            <thead style="display:none;">
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            @if (Model != null)
+            {
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("ApplicationDetails", "HomePage", new { jobid = item.Job_ID, no=item.No })">
+                                    <div>
+                                        <b style="color:#2E354E;">@item.Description</b><br />
+                                        <ul class="titles text-left">
+                                            <li style="color:#2E354E;"><span class="fa fa-clock-o" style="color: #E33237;"></span> Full Time</li>
+                                            @if (item.Appointment_Type_Description != null)
+                                            {
+                                                <li style="color:#2E354E;"><span class="fa fa-briefcase" style="color: #E33237;"></span> @item.Appointment_Type_Description</li>
+                                            }
+                                            <li style="color:#2E354E;"><span class="fa fa-money" style="color: #E33237;"></span> Not Specified </li>
+                                        </ul>
+                                    </div>
+                                    <br />
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            }
+        </table>
+        <br />
+    </div>
+</div>
+<br />
+<script src="~/Scripts/Default/home.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

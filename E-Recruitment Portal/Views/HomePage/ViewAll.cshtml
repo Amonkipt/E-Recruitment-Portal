@@ -1,0 +1,46 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+
+@{
+    ViewBag.Title = "ViewAll";
+    Layout = null;
+}
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Hobbies
+        </th>
+        <th>
+            No
+        </th>
+        <th>
+            Line_No
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null )
+    {
+        foreach (var item in Model.Hobbies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hobbies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.No)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Line_No)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

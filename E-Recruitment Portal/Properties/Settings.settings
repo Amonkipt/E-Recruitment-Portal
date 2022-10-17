@@ -1,0 +1,72 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="E_Recruitment_Portal.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="E_Recruitment_Portal_RecruitmentCard_RecruitmentCard_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/RecruitmentCard</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_ApplicantCard_ApplicantCard_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/ApplicantCard</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_RiskCard_RiskCard_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/RiskCard</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_CountriesRegions_CountriesRegions_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/CountriesRegions</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_Recruitment_Recruitment_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/Recruitment</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_ApplicantJobEducation_ApplicantJobEducation_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/ApplicantJobEducation</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_FieldsofStudy_FieldsofStudy_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/FieldsofStudy</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_Qualifications_Qualifications_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/Qualifications</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_ProfMembership_ProfMembership_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/ProfMembership</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_ApplicantJobProfessionalCourse_ApplicantJobProfessionalCourse_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/ApplicantJobProfessionalCourse</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_CompanyJobIndustries_CompanyJobIndustries_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/CompanyJobIndustries</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_AcademicQualifications_AcademicQualifications_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/AcademicQualifications</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_ApplicantHobbies_ApplicantHobbies_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/ApplicantHobbies</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_Referees_Referees_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/Referees</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_ApplicantJobprofessionalmembership_ApplicantJobprofessionalmembership_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/ApplicantJobprofessionalmembership</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_ApplicantJobExperience_ApplicantJobExperience_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/ApplicantJobExperience</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_Jobsapplied_Jobsapplied_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/Jobsapplied</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_OnlinePortal_OnlinePortal" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Codeunit/OnlinePortal</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_ProfMemberships_ProfMemberships_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://kmrcapp.kmrc.co.ke:7047/KMRC/WS/KMRC%20TEST/Page/ProfMemberships</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_CompanyJobCard_CompanyJobCard_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://kmrcapp.kmrc.co.ke:7047/KMRC/WS/KMRC%20TEST/Page/CompanyJobCard</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_CountyList_CountyList_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.88.8:23802/KDB_LIVE/WS/KDBTEST/Page/CountyList</Value>
+    </Setting>
+    <Setting Name="E_Recruitment_Portal_Applicantjobapplied_Applicantjobapplied_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.88.8:23802/KDB_LIVE/WS/KDBTEST/Page/Applicantjobapplied</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

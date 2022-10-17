@@ -1,0 +1,25 @@
+﻿@{
+    if (TempData["accountsuccess"] != null)
+    {
+        <div class="alert alert-success fade show" role="alert">
+            @TempData["accountsuccess"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    }
+    else if (TempData["accountfailed"] != null)
+    {
+        <div class="alert alert-danger">@TempData["accountfailed"]</div>
+    }
+
+    else if (TempData["accountinfo"] != null)
+    {
+        <div class="alert alert-info">@TempData["accountinfo"]</div>
+    }
+    else
+    {
+
+    }
+}

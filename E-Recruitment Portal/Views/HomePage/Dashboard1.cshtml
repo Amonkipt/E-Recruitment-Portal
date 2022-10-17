@@ -1,0 +1,202 @@
+﻿
+
+@{
+    ViewBag.Title = "Dashboard1";
+}
+
+<style>
+    body {
+        background-color: #eee
+    }
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0rem rgba(0, 123, 255, .25)
+    }
+
+    .btn-secondary:focus {
+        box-shadow: 0 0 0 0rem rgba(108, 117, 125, .5)
+    }
+
+    .close:focus {
+        box-shadow: 0 0 0 0rem rgba(108, 117, 125, .5)
+    }
+
+    .mt-200 {
+        margin-top: 200px
+    }
+</style>
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <p>@Html.ActionLink("Home Page", "Dashboard", "Home")</p>
+        </li>
+        <li class="breadcrumb-item active">@ViewBag.Title</li>
+    </ol>
+    <div id="smartwizard">
+        <ul>
+            <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
+            <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
+            <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
+            <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
+        </ul>
+        <div class="mt-4">
+            <div id="step-1">
+              
+            </div>
+            <div id="step-2">
+                <div class="row">
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
+                </div>
+            </div>
+            <div id="step-3" class="">
+                <div class="row">
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name" required> </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required> </div>
+                </div>
+            </div>
+            <div id="step-4" class="">
+                <div class="row">
+                    <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send you a confirmation email. We will review your details and revert back.</span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section styles{
+
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#education').on('change', function () {
+                var stateDropdown = $('#level');
+                var stateDropdownq = $('#proficiency');
+                var stateDropdown1 = $('#description');
+                var stateDropdown2 = $('#grade');
+                var optionvalue = $("#education").val();
+                if (optionvalue.length > 0) {
+                    if ($('#education').val() == 'Primary' || $('#education').val() == 'High_School' || $('#education').val() == null) {
+                        stateDropdown.prop('disabled', 'disabled');
+                        stateDropdownq.attr('disabled', 'disabled');
+                        stateDropdown1.removeAttr("disabled");
+                        stateDropdown2.removeAttr("disabled");
+                    } else {
+                        stateDropdown.removeAttr("disabled");
+                        stateDropdownq.removeAttr("disabled");
+                        stateDropdown1.attr('disabled', 'disabled');
+                        stateDropdown2.attr('disabled', 'disabled');
+                    }
+                }
+            });
+            $("#education").trigger("change");
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#level').on('change', function() {
+                var stateDropdown = $('#fos');
+                //disable state drop down
+                stateDropdown.prop('disabled', 'disabled');
+                //clear drop down of old states
+                stateDropdown.empty();
+
+                //retrieve selected country
+                var optionvalue = $(this).val();
+                if (optionvalue.length > 0) {
+                    // retrieve data using a Url.Action() to construct url
+                    $.getJSON('@Url.Action("GetStates")', {
+                        uoption: optionvalue
+                    })
+                    .done(function (data) {
+                        //re-enable state drop down
+                        stateDropdown.removeAttr('disabled');
+                        //for each returned state
+                        stateDropdown.prepend("<option value=' ' selected='selected'>Select</option>");
+                        $.each(data, function (i, fos) {
+                            //Create new option
+                            var option = $('<option />').html(fos);
+                            //append state states drop down
+                            stateDropdown.append(option);
+                        });
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        var err = textStatus + ", " + error;
+                        console.log("Request Failed: " + err);
+                    });
+                }
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#fos').on('change', function() {
+                var stateDropdown = $('#qc');
+                //disable state drop down
+                stateDropdown.prop('disabled', 'disabled');
+                //clear drop down of old states
+                stateDropdown.empty();
+
+                //retrieve selected country
+                var optionvalue = $(this).val();
+                var optionvalue1 = $("#level").val();
+                if (optionvalue.length > 0) {
+                    // retrieve data using a Url.Action() to construct url
+                    $.getJSON('@Url.Action("GetStates1")', {
+                        uoption: optionvalue,
+                        uoption1: optionvalue1
+                    })
+                    .done(function (data) {
+                        //re-enable state drop down
+                        stateDropdown.removeAttr('disabled');
+                        //for each returned state
+                        stateDropdown.prepend("<option value=' ' selected='selected'>Select</option>");
+                        $.each(data, function (i, qc) {
+                            //Create new option
+                            var option = $('<option />').html(qc);
+                            //append state states drop down
+                            stateDropdown.append(option);
+                        });
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        var err = textStatus + ", " + error;
+                        console.log("Request Failed: " + err);
+                    });
+                }
+            });
+        })
+    </script>
+    <script type="text/javascript" src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1581152197/smartwizard/jquery.smartWizard.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#smartwizard').smartWizard({
+                selected: 0,
+                theme: 'arrows',
+                autoAdjustHeight: true,
+                transitionEffect: 'fade',
+                showStepURLhash: false,
+
+            });
+
+        });
+    </script>
+
+}

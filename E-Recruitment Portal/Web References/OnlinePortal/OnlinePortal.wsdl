@@ -1,0 +1,1777 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="ApproveRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ApproveRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="AttachDocument">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recordID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AttachDocument_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CalculateAge">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CalculateAge_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelAppraisalApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelAppraisalApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CancelLeaveApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelLeaveApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CancelLoanApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelLoanApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CancelPaymentsApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelPaymentsApproval_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelRequisitionApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelRequisitionApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CancelTrainingRequestApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelTrainingRequestApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CancelTransportApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelTransportApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ConfirmFundsReceipt">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ConfirmFundsReceipt_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CopyDocument">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fromPath" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="toPath" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="replace" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CopyDocument_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CreateInternalRequestLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateInternalRequestLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DelegateRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DelegateRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="Execute">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="recID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="Execute_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ExportPictures">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ExportPictures_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="FnAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="link" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="userName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attached" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="FnAttachment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmpIDFromUserID">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="userCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmpIDFromUserID_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetFileExtension">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetFileExtension_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPictureStream">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="memberNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPictureStream_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetUserIDFromEmpID">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserIDFromEmpID_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ImportPictures">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ImportPictures_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="LeaveExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="LeaveExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="MemberStatement">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="file" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="memberNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="MemberStatement_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="PrintAppraisalObjectives">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintAppraisalObjectives_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintAppraisal">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintAppraisal_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintIncident">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="incidentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintIncident_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintLeave">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintLeave_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintLoanSchedule">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="loanAppNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintLoanSchedule_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintP9">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintP9_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintPaySlip">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="period" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintPaySlip_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintPayments">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintPayments_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintProcurementDocs">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintProcurementDocs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintRequisitions">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintRequisitions_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintSurvey">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="surveyNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintSurvey_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintTraining">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintTraining_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintTransport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PrintTransport_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="approverID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RejectRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendIncident">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="incidentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendIncident_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendLeaveApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendLeaveApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendLoanApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendLoanApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendPaymentsApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendPaymentsApproval_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendRequisitionApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendRequisitionApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendReviewAppraisal">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendReviewAppraisal_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendRiskSurvey">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendRiskSurvey_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendRisk">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="riskNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendRisk_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendTrainingRequestApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTrainingRequestApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SendTransportApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SendTransportApproval_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SetPictureStream">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="memberNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="ext" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="path" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SetPictureStream_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="SubmitApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitApplication_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="UpdateApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="senderID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateApprovalEntries_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="UploadApplicantDocument">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filePath" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="docType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadApplicantDocument_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadProcurementDocument">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="prospectID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="refNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filePath" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadProcurementDocument_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadRFQDocument">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vendorNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="refNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filePath" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UploadRFQDocument_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="ApproveRequest">
+    <part name="parameters" element="tns:ApproveRequest" />
+  </message>
+  <message name="ApproveRequest_Result">
+    <part name="parameters" element="tns:ApproveRequest_Result" />
+  </message>
+  <message name="AttachDocument">
+    <part name="parameters" element="tns:AttachDocument" />
+  </message>
+  <message name="AttachDocument_Result">
+    <part name="parameters" element="tns:AttachDocument_Result" />
+  </message>
+  <message name="CalculateAge">
+    <part name="parameters" element="tns:CalculateAge" />
+  </message>
+  <message name="CalculateAge_Result">
+    <part name="parameters" element="tns:CalculateAge_Result" />
+  </message>
+  <message name="CancelAppraisalApproval">
+    <part name="parameters" element="tns:CancelAppraisalApproval" />
+  </message>
+  <message name="CancelAppraisalApproval_Result">
+    <part name="parameters" element="tns:CancelAppraisalApproval_Result" />
+  </message>
+  <message name="CancelLeaveApproval">
+    <part name="parameters" element="tns:CancelLeaveApproval" />
+  </message>
+  <message name="CancelLeaveApproval_Result">
+    <part name="parameters" element="tns:CancelLeaveApproval_Result" />
+  </message>
+  <message name="CancelLoanApproval">
+    <part name="parameters" element="tns:CancelLoanApproval" />
+  </message>
+  <message name="CancelLoanApproval_Result">
+    <part name="parameters" element="tns:CancelLoanApproval_Result" />
+  </message>
+  <message name="CancelPaymentsApproval">
+    <part name="parameters" element="tns:CancelPaymentsApproval" />
+  </message>
+  <message name="CancelPaymentsApproval_Result">
+    <part name="parameters" element="tns:CancelPaymentsApproval_Result" />
+  </message>
+  <message name="CancelRequisitionApproval">
+    <part name="parameters" element="tns:CancelRequisitionApproval" />
+  </message>
+  <message name="CancelRequisitionApproval_Result">
+    <part name="parameters" element="tns:CancelRequisitionApproval_Result" />
+  </message>
+  <message name="CancelTrainingRequestApproval">
+    <part name="parameters" element="tns:CancelTrainingRequestApproval" />
+  </message>
+  <message name="CancelTrainingRequestApproval_Result">
+    <part name="parameters" element="tns:CancelTrainingRequestApproval_Result" />
+  </message>
+  <message name="CancelTransportApproval">
+    <part name="parameters" element="tns:CancelTransportApproval" />
+  </message>
+  <message name="CancelTransportApproval_Result">
+    <part name="parameters" element="tns:CancelTransportApproval_Result" />
+  </message>
+  <message name="ConfirmFundsReceipt">
+    <part name="parameters" element="tns:ConfirmFundsReceipt" />
+  </message>
+  <message name="ConfirmFundsReceipt_Result">
+    <part name="parameters" element="tns:ConfirmFundsReceipt_Result" />
+  </message>
+  <message name="CopyDocument">
+    <part name="parameters" element="tns:CopyDocument" />
+  </message>
+  <message name="CopyDocument_Result">
+    <part name="parameters" element="tns:CopyDocument_Result" />
+  </message>
+  <message name="CreateInternalRequestLine">
+    <part name="parameters" element="tns:CreateInternalRequestLine" />
+  </message>
+  <message name="CreateInternalRequestLine_Result">
+    <part name="parameters" element="tns:CreateInternalRequestLine_Result" />
+  </message>
+  <message name="DelegateRequest">
+    <part name="parameters" element="tns:DelegateRequest" />
+  </message>
+  <message name="DelegateRequest_Result">
+    <part name="parameters" element="tns:DelegateRequest_Result" />
+  </message>
+  <message name="Execute">
+    <part name="parameters" element="tns:Execute" />
+  </message>
+  <message name="Execute_Result">
+    <part name="parameters" element="tns:Execute_Result" />
+  </message>
+  <message name="ExportPictures">
+    <part name="parameters" element="tns:ExportPictures" />
+  </message>
+  <message name="ExportPictures_Result">
+    <part name="parameters" element="tns:ExportPictures_Result" />
+  </message>
+  <message name="FnAttachment">
+    <part name="parameters" element="tns:FnAttachment" />
+  </message>
+  <message name="FnAttachment_Result">
+    <part name="parameters" element="tns:FnAttachment_Result" />
+  </message>
+  <message name="GetEmpIDFromUserID">
+    <part name="parameters" element="tns:GetEmpIDFromUserID" />
+  </message>
+  <message name="GetEmpIDFromUserID_Result">
+    <part name="parameters" element="tns:GetEmpIDFromUserID_Result" />
+  </message>
+  <message name="GetFileExtension">
+    <part name="parameters" element="tns:GetFileExtension" />
+  </message>
+  <message name="GetFileExtension_Result">
+    <part name="parameters" element="tns:GetFileExtension_Result" />
+  </message>
+  <message name="GetPictureStream">
+    <part name="parameters" element="tns:GetPictureStream" />
+  </message>
+  <message name="GetPictureStream_Result">
+    <part name="parameters" element="tns:GetPictureStream_Result" />
+  </message>
+  <message name="GetUserIDFromEmpID">
+    <part name="parameters" element="tns:GetUserIDFromEmpID" />
+  </message>
+  <message name="GetUserIDFromEmpID_Result">
+    <part name="parameters" element="tns:GetUserIDFromEmpID_Result" />
+  </message>
+  <message name="ImportPictures">
+    <part name="parameters" element="tns:ImportPictures" />
+  </message>
+  <message name="ImportPictures_Result">
+    <part name="parameters" element="tns:ImportPictures_Result" />
+  </message>
+  <message name="LeaveExists">
+    <part name="parameters" element="tns:LeaveExists" />
+  </message>
+  <message name="LeaveExists_Result">
+    <part name="parameters" element="tns:LeaveExists_Result" />
+  </message>
+  <message name="MemberStatement">
+    <part name="parameters" element="tns:MemberStatement" />
+  </message>
+  <message name="MemberStatement_Result">
+    <part name="parameters" element="tns:MemberStatement_Result" />
+  </message>
+  <message name="PrintAppraisalObjectives">
+    <part name="parameters" element="tns:PrintAppraisalObjectives" />
+  </message>
+  <message name="PrintAppraisalObjectives_Result">
+    <part name="parameters" element="tns:PrintAppraisalObjectives_Result" />
+  </message>
+  <message name="PrintAppraisal">
+    <part name="parameters" element="tns:PrintAppraisal" />
+  </message>
+  <message name="PrintAppraisal_Result">
+    <part name="parameters" element="tns:PrintAppraisal_Result" />
+  </message>
+  <message name="PrintIncident">
+    <part name="parameters" element="tns:PrintIncident" />
+  </message>
+  <message name="PrintIncident_Result">
+    <part name="parameters" element="tns:PrintIncident_Result" />
+  </message>
+  <message name="PrintLeave">
+    <part name="parameters" element="tns:PrintLeave" />
+  </message>
+  <message name="PrintLeave_Result">
+    <part name="parameters" element="tns:PrintLeave_Result" />
+  </message>
+  <message name="PrintLoanSchedule">
+    <part name="parameters" element="tns:PrintLoanSchedule" />
+  </message>
+  <message name="PrintLoanSchedule_Result">
+    <part name="parameters" element="tns:PrintLoanSchedule_Result" />
+  </message>
+  <message name="PrintP9">
+    <part name="parameters" element="tns:PrintP9" />
+  </message>
+  <message name="PrintP9_Result">
+    <part name="parameters" element="tns:PrintP9_Result" />
+  </message>
+  <message name="PrintPaySlip">
+    <part name="parameters" element="tns:PrintPaySlip" />
+  </message>
+  <message name="PrintPaySlip_Result">
+    <part name="parameters" element="tns:PrintPaySlip_Result" />
+  </message>
+  <message name="PrintPayments">
+    <part name="parameters" element="tns:PrintPayments" />
+  </message>
+  <message name="PrintPayments_Result">
+    <part name="parameters" element="tns:PrintPayments_Result" />
+  </message>
+  <message name="PrintProcurementDocs">
+    <part name="parameters" element="tns:PrintProcurementDocs" />
+  </message>
+  <message name="PrintProcurementDocs_Result">
+    <part name="parameters" element="tns:PrintProcurementDocs_Result" />
+  </message>
+  <message name="PrintRequisitions">
+    <part name="parameters" element="tns:PrintRequisitions" />
+  </message>
+  <message name="PrintRequisitions_Result">
+    <part name="parameters" element="tns:PrintRequisitions_Result" />
+  </message>
+  <message name="PrintSurvey">
+    <part name="parameters" element="tns:PrintSurvey" />
+  </message>
+  <message name="PrintSurvey_Result">
+    <part name="parameters" element="tns:PrintSurvey_Result" />
+  </message>
+  <message name="PrintTraining">
+    <part name="parameters" element="tns:PrintTraining" />
+  </message>
+  <message name="PrintTraining_Result">
+    <part name="parameters" element="tns:PrintTraining_Result" />
+  </message>
+  <message name="PrintTransport">
+    <part name="parameters" element="tns:PrintTransport" />
+  </message>
+  <message name="PrintTransport_Result">
+    <part name="parameters" element="tns:PrintTransport_Result" />
+  </message>
+  <message name="RejectRequest">
+    <part name="parameters" element="tns:RejectRequest" />
+  </message>
+  <message name="RejectRequest_Result">
+    <part name="parameters" element="tns:RejectRequest_Result" />
+  </message>
+  <message name="SendIncident">
+    <part name="parameters" element="tns:SendIncident" />
+  </message>
+  <message name="SendIncident_Result">
+    <part name="parameters" element="tns:SendIncident_Result" />
+  </message>
+  <message name="SendLeaveApproval">
+    <part name="parameters" element="tns:SendLeaveApproval" />
+  </message>
+  <message name="SendLeaveApproval_Result">
+    <part name="parameters" element="tns:SendLeaveApproval_Result" />
+  </message>
+  <message name="SendLoanApproval">
+    <part name="parameters" element="tns:SendLoanApproval" />
+  </message>
+  <message name="SendLoanApproval_Result">
+    <part name="parameters" element="tns:SendLoanApproval_Result" />
+  </message>
+  <message name="SendPaymentsApproval">
+    <part name="parameters" element="tns:SendPaymentsApproval" />
+  </message>
+  <message name="SendPaymentsApproval_Result">
+    <part name="parameters" element="tns:SendPaymentsApproval_Result" />
+  </message>
+  <message name="SendRequisitionApproval">
+    <part name="parameters" element="tns:SendRequisitionApproval" />
+  </message>
+  <message name="SendRequisitionApproval_Result">
+    <part name="parameters" element="tns:SendRequisitionApproval_Result" />
+  </message>
+  <message name="SendReviewAppraisal">
+    <part name="parameters" element="tns:SendReviewAppraisal" />
+  </message>
+  <message name="SendReviewAppraisal_Result">
+    <part name="parameters" element="tns:SendReviewAppraisal_Result" />
+  </message>
+  <message name="SendRiskSurvey">
+    <part name="parameters" element="tns:SendRiskSurvey" />
+  </message>
+  <message name="SendRiskSurvey_Result">
+    <part name="parameters" element="tns:SendRiskSurvey_Result" />
+  </message>
+  <message name="SendRisk">
+    <part name="parameters" element="tns:SendRisk" />
+  </message>
+  <message name="SendRisk_Result">
+    <part name="parameters" element="tns:SendRisk_Result" />
+  </message>
+  <message name="SendTrainingRequestApproval">
+    <part name="parameters" element="tns:SendTrainingRequestApproval" />
+  </message>
+  <message name="SendTrainingRequestApproval_Result">
+    <part name="parameters" element="tns:SendTrainingRequestApproval_Result" />
+  </message>
+  <message name="SendTransportApproval">
+    <part name="parameters" element="tns:SendTransportApproval" />
+  </message>
+  <message name="SendTransportApproval_Result">
+    <part name="parameters" element="tns:SendTransportApproval_Result" />
+  </message>
+  <message name="SetPictureStream">
+    <part name="parameters" element="tns:SetPictureStream" />
+  </message>
+  <message name="SetPictureStream_Result">
+    <part name="parameters" element="tns:SetPictureStream_Result" />
+  </message>
+  <message name="SubmitApplication">
+    <part name="parameters" element="tns:SubmitApplication" />
+  </message>
+  <message name="SubmitApplication_Result">
+    <part name="parameters" element="tns:SubmitApplication_Result" />
+  </message>
+  <message name="UpdateApprovalEntries">
+    <part name="parameters" element="tns:UpdateApprovalEntries" />
+  </message>
+  <message name="UpdateApprovalEntries_Result">
+    <part name="parameters" element="tns:UpdateApprovalEntries_Result" />
+  </message>
+  <message name="UploadApplicantDocument">
+    <part name="parameters" element="tns:UploadApplicantDocument" />
+  </message>
+  <message name="UploadApplicantDocument_Result">
+    <part name="parameters" element="tns:UploadApplicantDocument_Result" />
+  </message>
+  <message name="UploadProcurementDocument">
+    <part name="parameters" element="tns:UploadProcurementDocument" />
+  </message>
+  <message name="UploadProcurementDocument_Result">
+    <part name="parameters" element="tns:UploadProcurementDocument_Result" />
+  </message>
+  <message name="UploadRFQDocument">
+    <part name="parameters" element="tns:UploadRFQDocument" />
+  </message>
+  <message name="UploadRFQDocument_Result">
+    <part name="parameters" element="tns:UploadRFQDocument_Result" />
+  </message>
+  <portType name="OnlinePortal_Port">
+    <operation name="ApproveRequest">
+      <input name="ApproveRequest" message="tns:ApproveRequest" />
+      <output name="ApproveRequest_Result" message="tns:ApproveRequest_Result" />
+    </operation>
+    <operation name="AttachDocument">
+      <input name="AttachDocument" message="tns:AttachDocument" />
+      <output name="AttachDocument_Result" message="tns:AttachDocument_Result" />
+    </operation>
+    <operation name="CalculateAge">
+      <input name="CalculateAge" message="tns:CalculateAge" />
+      <output name="CalculateAge_Result" message="tns:CalculateAge_Result" />
+    </operation>
+    <operation name="CancelAppraisalApproval">
+      <input name="CancelAppraisalApproval" message="tns:CancelAppraisalApproval" />
+      <output name="CancelAppraisalApproval_Result" message="tns:CancelAppraisalApproval_Result" />
+    </operation>
+    <operation name="CancelLeaveApproval">
+      <input name="CancelLeaveApproval" message="tns:CancelLeaveApproval" />
+      <output name="CancelLeaveApproval_Result" message="tns:CancelLeaveApproval_Result" />
+    </operation>
+    <operation name="CancelLoanApproval">
+      <input name="CancelLoanApproval" message="tns:CancelLoanApproval" />
+      <output name="CancelLoanApproval_Result" message="tns:CancelLoanApproval_Result" />
+    </operation>
+    <operation name="CancelPaymentsApproval">
+      <input name="CancelPaymentsApproval" message="tns:CancelPaymentsApproval" />
+      <output name="CancelPaymentsApproval_Result" message="tns:CancelPaymentsApproval_Result" />
+    </operation>
+    <operation name="CancelRequisitionApproval">
+      <input name="CancelRequisitionApproval" message="tns:CancelRequisitionApproval" />
+      <output name="CancelRequisitionApproval_Result" message="tns:CancelRequisitionApproval_Result" />
+    </operation>
+    <operation name="CancelTrainingRequestApproval">
+      <input name="CancelTrainingRequestApproval" message="tns:CancelTrainingRequestApproval" />
+      <output name="CancelTrainingRequestApproval_Result" message="tns:CancelTrainingRequestApproval_Result" />
+    </operation>
+    <operation name="CancelTransportApproval">
+      <input name="CancelTransportApproval" message="tns:CancelTransportApproval" />
+      <output name="CancelTransportApproval_Result" message="tns:CancelTransportApproval_Result" />
+    </operation>
+    <operation name="ConfirmFundsReceipt">
+      <input name="ConfirmFundsReceipt" message="tns:ConfirmFundsReceipt" />
+      <output name="ConfirmFundsReceipt_Result" message="tns:ConfirmFundsReceipt_Result" />
+    </operation>
+    <operation name="CopyDocument">
+      <input name="CopyDocument" message="tns:CopyDocument" />
+      <output name="CopyDocument_Result" message="tns:CopyDocument_Result" />
+    </operation>
+    <operation name="CreateInternalRequestLine">
+      <input name="CreateInternalRequestLine" message="tns:CreateInternalRequestLine" />
+      <output name="CreateInternalRequestLine_Result" message="tns:CreateInternalRequestLine_Result" />
+    </operation>
+    <operation name="DelegateRequest">
+      <input name="DelegateRequest" message="tns:DelegateRequest" />
+      <output name="DelegateRequest_Result" message="tns:DelegateRequest_Result" />
+    </operation>
+    <operation name="Execute">
+      <input name="Execute" message="tns:Execute" />
+      <output name="Execute_Result" message="tns:Execute_Result" />
+    </operation>
+    <operation name="ExportPictures">
+      <input name="ExportPictures" message="tns:ExportPictures" />
+      <output name="ExportPictures_Result" message="tns:ExportPictures_Result" />
+    </operation>
+    <operation name="FnAttachment">
+      <input name="FnAttachment" message="tns:FnAttachment" />
+      <output name="FnAttachment_Result" message="tns:FnAttachment_Result" />
+    </operation>
+    <operation name="GetEmpIDFromUserID">
+      <input name="GetEmpIDFromUserID" message="tns:GetEmpIDFromUserID" />
+      <output name="GetEmpIDFromUserID_Result" message="tns:GetEmpIDFromUserID_Result" />
+    </operation>
+    <operation name="GetFileExtension">
+      <input name="GetFileExtension" message="tns:GetFileExtension" />
+      <output name="GetFileExtension_Result" message="tns:GetFileExtension_Result" />
+    </operation>
+    <operation name="GetPictureStream">
+      <input name="GetPictureStream" message="tns:GetPictureStream" />
+      <output name="GetPictureStream_Result" message="tns:GetPictureStream_Result" />
+    </operation>
+    <operation name="GetUserIDFromEmpID">
+      <input name="GetUserIDFromEmpID" message="tns:GetUserIDFromEmpID" />
+      <output name="GetUserIDFromEmpID_Result" message="tns:GetUserIDFromEmpID_Result" />
+    </operation>
+    <operation name="ImportPictures">
+      <input name="ImportPictures" message="tns:ImportPictures" />
+      <output name="ImportPictures_Result" message="tns:ImportPictures_Result" />
+    </operation>
+    <operation name="LeaveExists">
+      <input name="LeaveExists" message="tns:LeaveExists" />
+      <output name="LeaveExists_Result" message="tns:LeaveExists_Result" />
+    </operation>
+    <operation name="MemberStatement">
+      <input name="MemberStatement" message="tns:MemberStatement" />
+      <output name="MemberStatement_Result" message="tns:MemberStatement_Result" />
+    </operation>
+    <operation name="PrintAppraisalObjectives">
+      <input name="PrintAppraisalObjectives" message="tns:PrintAppraisalObjectives" />
+      <output name="PrintAppraisalObjectives_Result" message="tns:PrintAppraisalObjectives_Result" />
+    </operation>
+    <operation name="PrintAppraisal">
+      <input name="PrintAppraisal" message="tns:PrintAppraisal" />
+      <output name="PrintAppraisal_Result" message="tns:PrintAppraisal_Result" />
+    </operation>
+    <operation name="PrintIncident">
+      <input name="PrintIncident" message="tns:PrintIncident" />
+      <output name="PrintIncident_Result" message="tns:PrintIncident_Result" />
+    </operation>
+    <operation name="PrintLeave">
+      <input name="PrintLeave" message="tns:PrintLeave" />
+      <output name="PrintLeave_Result" message="tns:PrintLeave_Result" />
+    </operation>
+    <operation name="PrintLoanSchedule">
+      <input name="PrintLoanSchedule" message="tns:PrintLoanSchedule" />
+      <output name="PrintLoanSchedule_Result" message="tns:PrintLoanSchedule_Result" />
+    </operation>
+    <operation name="PrintP9">
+      <input name="PrintP9" message="tns:PrintP9" />
+      <output name="PrintP9_Result" message="tns:PrintP9_Result" />
+    </operation>
+    <operation name="PrintPaySlip">
+      <input name="PrintPaySlip" message="tns:PrintPaySlip" />
+      <output name="PrintPaySlip_Result" message="tns:PrintPaySlip_Result" />
+    </operation>
+    <operation name="PrintPayments">
+      <input name="PrintPayments" message="tns:PrintPayments" />
+      <output name="PrintPayments_Result" message="tns:PrintPayments_Result" />
+    </operation>
+    <operation name="PrintProcurementDocs">
+      <input name="PrintProcurementDocs" message="tns:PrintProcurementDocs" />
+      <output name="PrintProcurementDocs_Result" message="tns:PrintProcurementDocs_Result" />
+    </operation>
+    <operation name="PrintRequisitions">
+      <input name="PrintRequisitions" message="tns:PrintRequisitions" />
+      <output name="PrintRequisitions_Result" message="tns:PrintRequisitions_Result" />
+    </operation>
+    <operation name="PrintSurvey">
+      <input name="PrintSurvey" message="tns:PrintSurvey" />
+      <output name="PrintSurvey_Result" message="tns:PrintSurvey_Result" />
+    </operation>
+    <operation name="PrintTraining">
+      <input name="PrintTraining" message="tns:PrintTraining" />
+      <output name="PrintTraining_Result" message="tns:PrintTraining_Result" />
+    </operation>
+    <operation name="PrintTransport">
+      <input name="PrintTransport" message="tns:PrintTransport" />
+      <output name="PrintTransport_Result" message="tns:PrintTransport_Result" />
+    </operation>
+    <operation name="RejectRequest">
+      <input name="RejectRequest" message="tns:RejectRequest" />
+      <output name="RejectRequest_Result" message="tns:RejectRequest_Result" />
+    </operation>
+    <operation name="SendIncident">
+      <input name="SendIncident" message="tns:SendIncident" />
+      <output name="SendIncident_Result" message="tns:SendIncident_Result" />
+    </operation>
+    <operation name="SendLeaveApproval">
+      <input name="SendLeaveApproval" message="tns:SendLeaveApproval" />
+      <output name="SendLeaveApproval_Result" message="tns:SendLeaveApproval_Result" />
+    </operation>
+    <operation name="SendLoanApproval">
+      <input name="SendLoanApproval" message="tns:SendLoanApproval" />
+      <output name="SendLoanApproval_Result" message="tns:SendLoanApproval_Result" />
+    </operation>
+    <operation name="SendPaymentsApproval">
+      <input name="SendPaymentsApproval" message="tns:SendPaymentsApproval" />
+      <output name="SendPaymentsApproval_Result" message="tns:SendPaymentsApproval_Result" />
+    </operation>
+    <operation name="SendRequisitionApproval">
+      <input name="SendRequisitionApproval" message="tns:SendRequisitionApproval" />
+      <output name="SendRequisitionApproval_Result" message="tns:SendRequisitionApproval_Result" />
+    </operation>
+    <operation name="SendReviewAppraisal">
+      <input name="SendReviewAppraisal" message="tns:SendReviewAppraisal" />
+      <output name="SendReviewAppraisal_Result" message="tns:SendReviewAppraisal_Result" />
+    </operation>
+    <operation name="SendRiskSurvey">
+      <input name="SendRiskSurvey" message="tns:SendRiskSurvey" />
+      <output name="SendRiskSurvey_Result" message="tns:SendRiskSurvey_Result" />
+    </operation>
+    <operation name="SendRisk">
+      <input name="SendRisk" message="tns:SendRisk" />
+      <output name="SendRisk_Result" message="tns:SendRisk_Result" />
+    </operation>
+    <operation name="SendTrainingRequestApproval">
+      <input name="SendTrainingRequestApproval" message="tns:SendTrainingRequestApproval" />
+      <output name="SendTrainingRequestApproval_Result" message="tns:SendTrainingRequestApproval_Result" />
+    </operation>
+    <operation name="SendTransportApproval">
+      <input name="SendTransportApproval" message="tns:SendTransportApproval" />
+      <output name="SendTransportApproval_Result" message="tns:SendTransportApproval_Result" />
+    </operation>
+    <operation name="SetPictureStream">
+      <input name="SetPictureStream" message="tns:SetPictureStream" />
+      <output name="SetPictureStream_Result" message="tns:SetPictureStream_Result" />
+    </operation>
+    <operation name="SubmitApplication">
+      <input name="SubmitApplication" message="tns:SubmitApplication" />
+      <output name="SubmitApplication_Result" message="tns:SubmitApplication_Result" />
+    </operation>
+    <operation name="UpdateApprovalEntries">
+      <input name="UpdateApprovalEntries" message="tns:UpdateApprovalEntries" />
+      <output name="UpdateApprovalEntries_Result" message="tns:UpdateApprovalEntries_Result" />
+    </operation>
+    <operation name="UploadApplicantDocument">
+      <input name="UploadApplicantDocument" message="tns:UploadApplicantDocument" />
+      <output name="UploadApplicantDocument_Result" message="tns:UploadApplicantDocument_Result" />
+    </operation>
+    <operation name="UploadProcurementDocument">
+      <input name="UploadProcurementDocument" message="tns:UploadProcurementDocument" />
+      <output name="UploadProcurementDocument_Result" message="tns:UploadProcurementDocument_Result" />
+    </operation>
+    <operation name="UploadRFQDocument">
+      <input name="UploadRFQDocument" message="tns:UploadRFQDocument" />
+      <output name="UploadRFQDocument_Result" message="tns:UploadRFQDocument_Result" />
+    </operation>
+  </portType>
+  <binding name="OnlinePortal_Binding" type="tns:OnlinePortal_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="ApproveRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:ApproveRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ApproveRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ApproveRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="AttachDocument">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:AttachDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AttachDocument">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AttachDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CalculateAge">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CalculateAge" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CalculateAge">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CalculateAge_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelAppraisalApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CancelAppraisalApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelAppraisalApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelAppraisalApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelLeaveApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CancelLeaveApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelLeaveApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelLeaveApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelLoanApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CancelLoanApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelLoanApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelLoanApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelPaymentsApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CancelPaymentsApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelPaymentsApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelPaymentsApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelRequisitionApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CancelRequisitionApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelRequisitionApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelRequisitionApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelTrainingRequestApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CancelTrainingRequestApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelTrainingRequestApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelTrainingRequestApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CancelTransportApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CancelTransportApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CancelTransportApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CancelTransportApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ConfirmFundsReceipt">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:ConfirmFundsReceipt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ConfirmFundsReceipt">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ConfirmFundsReceipt_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CopyDocument">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CopyDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CopyDocument">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CopyDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateInternalRequestLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:CreateInternalRequestLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateInternalRequestLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateInternalRequestLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DelegateRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:DelegateRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DelegateRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DelegateRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Execute">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:Execute" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Execute">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Execute_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ExportPictures">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:ExportPictures" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ExportPictures">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ExportPictures_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="FnAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:FnAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="FnAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="FnAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmpIDFromUserID">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:GetEmpIDFromUserID" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmpIDFromUserID">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmpIDFromUserID_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetFileExtension">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:GetFileExtension" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetFileExtension">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetFileExtension_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPictureStream">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:GetPictureStream" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPictureStream">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPictureStream_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetUserIDFromEmpID">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:GetUserIDFromEmpID" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetUserIDFromEmpID">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetUserIDFromEmpID_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ImportPictures">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:ImportPictures" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ImportPictures">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ImportPictures_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="LeaveExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:LeaveExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="LeaveExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="LeaveExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="MemberStatement">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:MemberStatement" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="MemberStatement">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="MemberStatement_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintAppraisalObjectives">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintAppraisalObjectives" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintAppraisalObjectives">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintAppraisalObjectives_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintAppraisal">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintAppraisal" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintAppraisal">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintAppraisal_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintIncident">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintIncident" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintIncident">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintIncident_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintLeave">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintLeave" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintLeave">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintLeave_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintLoanSchedule">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintLoanSchedule" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintLoanSchedule">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintLoanSchedule_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintP9">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintP9" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintP9">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintP9_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintPaySlip">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintPaySlip" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintPaySlip">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintPaySlip_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintPayments">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintPayments" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintPayments">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintPayments_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintProcurementDocs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintProcurementDocs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintProcurementDocs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintProcurementDocs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintRequisitions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintRequisitions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintRequisitions_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintSurvey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintSurvey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintSurvey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintSurvey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintTraining">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintTraining" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintTraining">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintTraining_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="PrintTransport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:PrintTransport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PrintTransport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PrintTransport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RejectRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:RejectRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RejectRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RejectRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendIncident">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendIncident" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendIncident">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendIncident_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendLeaveApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendLeaveApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendLeaveApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendLeaveApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendLoanApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendLoanApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendLoanApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendLoanApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendPaymentsApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendPaymentsApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendPaymentsApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendPaymentsApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendRequisitionApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendRequisitionApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendRequisitionApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendRequisitionApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendReviewAppraisal">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendReviewAppraisal" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendReviewAppraisal">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendReviewAppraisal_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendRiskSurvey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendRiskSurvey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendRiskSurvey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendRiskSurvey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendRisk">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendRisk" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendRisk">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendRisk_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendTrainingRequestApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendTrainingRequestApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendTrainingRequestApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendTrainingRequestApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SendTransportApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SendTransportApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SendTransportApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SendTransportApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SetPictureStream">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SetPictureStream" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SetPictureStream">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SetPictureStream_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SubmitApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:SubmitApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:UpdateApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateApprovalEntries_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UploadApplicantDocument">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:UploadApplicantDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UploadApplicantDocument">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UploadApplicantDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UploadProcurementDocument">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:UploadProcurementDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UploadProcurementDocument">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UploadProcurementDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UploadRFQDocument">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/OnlinePortal:UploadRFQDocument" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UploadRFQDocument">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UploadRFQDocument_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="OnlinePortal">
+    <port name="OnlinePortal_Port" binding="tns:OnlinePortal_Binding">
+      <address location="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Codeunit/OnlinePortal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

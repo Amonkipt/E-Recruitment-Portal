@@ -1,0 +1,107 @@
+﻿<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @{
+                Html.RenderPartial("_Sidebar");
+            }
+        </div>
+        <br />
+        <div class="col-md-9">
+            @{
+                Html.RenderPartial("_Feedback1");
+            }
+            <style type="text/css" media="screen and (max-width:1200px)">
+                h3.out {
+                    font-size: 25px;
+                }
+            </style>
+            <div class="hero-wrap" style="background-image: url('/Content/images/dashboard.jpg'); opacity: 0.7; background-color: #9AA093; height: 300px;" data-stellar-background-ratio="0.5">
+                <div class="container">
+                    <div class="col-md-12 ftco-animate d-flex align-items-end" style="padding-top: 50px;">
+                        <div class="text w-100">
+                            <p style="color: #E33237;" class="mb-4">YOUR NUMBER 1 ONLINE JOB APPLICATION PORTAL</p>
+                            <h3 style="color: black;" class="mb-4 out">Welcome to Kenya Mortgage Refinance Company Online Application Portal</h3>
+                            <p style="color: #FFFFFF;">We value you. Thank you!</p>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="text text-danger">* Ensure you fill these steps before submitting your application!</div>
+            <hr />
+            <div class="list-group">
+                <div class="modal-body row">
+                    <div class="col-md-6 ">
+                        <div class="form-group list-group-item text-center">
+                            <div class="col-md-offset-2 col-md-12">
+                                @if (ViewBag.profile == 0)
+                                {
+                                    <div class="text text-danger fa fa-times"> Please fill this step</div>
+                                    <a href="~/Homepage/Profile" class="btn-success btn-block">Create your profile</a>
+                                }
+                                else if (ViewBag.profile > 0)
+                                {
+                                    <div class="text text-success fa fa-check"> Done</div>
+                                    <a href="~/Homepage/Profile" class="btn-success btn-block">Manage your profile</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group list-group-item text-center">
+                            <div class="col-md-offset-2 col-md-12">
+                                @if (ViewBag.education == 0)
+                                {
+                                    <div class="text text-danger fa fa-times"> Please fill this step</div>
+                                    <a href="~/Homepage/Education" class="btn-success btn-block">Add your education background</a>
+                                }
+                                else if (ViewBag.education > 0)
+                                {
+                                    <div class="text text-success fa fa-check"> Done</div>
+                                    <a href="~/Homepage/Education" class="btn-success btn-block">Manage your education background(s)</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-md-6 ">
+                        <div class="form-group list-group-item text-center">
+                            <div class="col-md-offset-2 col-md-12">
+                                @if (ViewBag.experience == 0)
+                                {
+                                    <div class="text text-danger fa fa-times"> Please fill this step</div>
+                                    <a href="~/Homepage/WorkExperience" class="btn-success btn-block">Create your work experience</a>
+                                }
+                                else if (ViewBag.experience > 0)
+                                {
+                                    <div class="text text-success fa fa-check"> Done</div>
+                                    <a href="~/Homepage/WorkExperience" class="btn-success btn-block">Manage your work experience(s)</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group list-group-item text-center">
+                            <div class="col-md-offset-2 col-md-12">
+                                @if (ViewBag.referees == 0)
+                                {
+                                    <div class="text text-danger fa fa-times"> Please fill this step</div>
+                                    <a href="~/Homepage/Referees" class="btn-success btn-block">Add your referee</a>
+                                }
+                                else if (ViewBag.referees > 0)
+                                {
+                                    <div class="text text-success fa fa-check"> Done</div>
+                                    <a href="~/Homepage/Referees" class="btn-success btn-block">Manage your referee(s)</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />

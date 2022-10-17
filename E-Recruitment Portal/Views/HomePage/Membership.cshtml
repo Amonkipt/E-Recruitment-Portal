@@ -1,0 +1,118 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+@{
+    ViewBag.Title = "Membership";
+}
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @{
+                Html.RenderPartial("_Sidebar");
+            }
+        </div>
+        <br />
+        <div class="col-md-9">
+            <style>
+                table, tr, th, td {
+                    border: none;
+                }
+
+                option:hover {
+                    background-color: #E33237;
+                }
+            </style>
+            <div class="box-header with-border">
+                <h4 class="box-title"> MEMBERSHIP </h4>
+                <div class="box-tools pull-right">
+                </div>
+            </div>
+            <section>
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped" style="border:none;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Professional Body</th>
+                                <th>Description</th>
+                                <th>Membership No</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model.ProfessionalMembership)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @using (Html.BeginForm("RemoveMembership", "HomePage", new { key = item.Key }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-danger fa fa-trash xs-margin delete"></button>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@item.Professional_Body</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.MembershipNo</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <br />
+            <div>
+                <h3 id="NewMembership" class="fa fa-plus"> Add New Membership</h3>
+            </div>
+            <br />
+            <div hidden id="AddLine">
+                @using (Html.BeginForm("ManageMembership", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <h3 class=""> New Membership</h3>
+                    <hr />
+
+                    <input name="Applicant_No" value="@Model.No" type="hidden" />
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Professional Body</label>
+                            <div class="col-md-12">
+                                <select name="Professional_Body" class="input" required>
+                                    <option value="">Select</option>
+                                    @foreach (var rel in ViewBag.pm)
+                                    {
+                                        <option value="@rel.Name">@rel.Description</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Membership No</label>
+                            <div class="col-md-12">
+                                <input name="MembershipNo" type="text" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <input type="submit" value="Add Membership" class="btn btn-succ btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<br />
+<script src="~/Scripts/Default/home.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+<ul class="navbar-nav ml-auto" style="padding-top: 5px; padding-bottom: 5px;">
+    <li class="nav-item">
+        <div class="dropdown">
+            <a href="~/HomePage/OpenApplications" class="fa fa-dashboard"> DASHBOARD</a>
+        </div>
+    </li>
+    @*<li class="nav-item">
+        <div class="dropdown">
+            <a href="~/HomePage/OpenApplications" class="fa fa-list"> JOBS</a>
+        </div>
+    </li>*@
+    <li class="nav-item">
+        <div class="dropdown">
+            <button class="dropbtn dropdown-toggle fa fa-list"> JOBS</button>
+            <div class="dropdown-content">
+                @Html.ActionLink(" OPEN JOBS", "OpenApplications", "HomePage", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "fa fa-user-plus" })
+                @Html.ActionLink(" SUBMITTED APPLICATIONS", "SubmittedApplications", "HomePage", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "fa fa-sign-in" })
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <div class="dropdown">
+            <button class="dropbtn dropdown-toggle fa fa-gear"> ACCOUNT</button>
+            <div class="dropdown-content">
+                <a class="fa fa-refresh" href="@Url.Action("ChangePassword", "Manage")"> RESET PASSWORD</a>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                }
+                <a class="fa fa-power-off" href="javascript:document.getElementById('logoutForm').submit()"> LOG OUT</a>
+            </div>
+        </div>
+    </li>
+    @*<li class="nav-item">
+            <div class="dropdown">
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                }
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="fa fa-sign-out mr-3"> LOG OUT</a>
+            </div>
+        </li>*@
+</ul>
+}
+else
+{
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <div class="dropdown">
+            <a href="~/Home/Index" class="fa fa-home"> HOME</a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <div class="dropdown">
+            <a href="~/Home/Index" class="fa fa-list"> JOBS</a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <div class="dropdown">
+            <button class="dropbtn dropdown-toggle fa fa-users"> ACCOUNT</button>
+            <div class="dropdown-content">
+                @Html.ActionLink(" REGISTRATION", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "fa fa-user-plus" })
+                @Html.ActionLink(" LOGIN", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "fa fa-sign-in" })
+            </div>
+        </div>
+    </li>
+    @*<li class="nav-item">
+        <div class="dropdown">
+            @Html.ActionLink(" LOGIN/REGISTER", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "fa fa-sign-in" })
+        </div>
+    </li>*@
+</ul>
+}

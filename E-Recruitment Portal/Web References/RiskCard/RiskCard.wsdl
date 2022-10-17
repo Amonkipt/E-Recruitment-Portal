@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/riskcard" targetNamespace="urn:microsoft-dynamics-schemas/page/riskcard" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/riskcard" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Risk" />
+          <xsd:enumeration value="Risk_Opportunity" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Risk_Opportunity_Assessment">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Enhance" />
+          <xsd:enumeration value="Exploit" />
+          <xsd:enumeration value="Share" />
+          <xsd:enumeration value="Do_Nothing" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Document_Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="New" />
+          <xsd:enumeration value="Champion" />
+          <xsd:enumeration value="Officer" />
+          <xsd:enumeration value="HOD" />
+          <xsd:enumeration value="Champion_2" />
+          <xsd:enumeration value="Closed" />
+          <xsd:enumeration value="Project_Manager" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Risk_Acceptance_Decision">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Treat" />
+          <xsd:enumeration value="Tolerate" />
+          <xsd:enumeration value="Terminate" />
+          <xsd:enumeration value="Transfer" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Control_RAG_Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="VERY_HIGH" />
+          <xsd:enumeration value="HIGH" />
+          <xsd:enumeration value="AMBER" />
+          <xsd:enumeration value="LOW" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="RAG_Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="VERY_HIGH" />
+          <xsd:enumeration value="HIGH" />
+          <xsd:enumeration value="AMBER" />
+          <xsd:enumeration value="LOW" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Residual_RAG_Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="VERY_HIGH" />
+          <xsd:enumeration value="HIGH" />
+          <xsd:enumeration value="AMBER" />
+          <xsd:enumeration value="LOW" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Type_2">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Drivers" />
+          <xsd:enumeration value="Mitigation_Proposal" />
+          <xsd:enumeration value="Effects" />
+          <xsd:enumeration value="Value_Explanation" />
+          <xsd:enumeration value="Existing_Control" />
+          <xsd:enumeration value="KRI_s" />
+          <xsd:enumeration value="Response" />
+          <xsd:enumeration value="M_x0026_E" />
+          <xsd:enumeration value="Risk_Category" />
+          <xsd:enumeration value="Risk_Opportunity" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Existing_Risk_Controls">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="tns:Type_2" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Line_No" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Existing_Risk_Controls_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Existing_Risk_Controls" type="tns:Existing_Risk_Controls" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Update_Frequency">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Daily" />
+          <xsd:enumeration value="Weekly" />
+          <xsd:enumeration value="Monthly" />
+          <xsd:enumeration value="Quaterly" />
+          <xsd:enumeration value="Semi_Annually" />
+          <xsd:enumeration value="Annually" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Risk_KRI_s">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="KRI" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Target" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Tolerance" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Appetite" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Date_of_Completion" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Update_Frequency" type="tns:Update_Frequency" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Line_No" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Risk_KRI_s_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Risk_KRI_s" type="tns:Risk_KRI_s" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Risk_Drivers">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Line_No" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Risk_Drivers_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Risk_Drivers" type="tns:Risk_Drivers" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Risk_Mitigation_Propose">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Line_No" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Risk_Mitigation_Propose_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Risk_Mitigation_Propose" type="tns:Risk_Mitigation_Propose" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RiskCard">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Date_Created" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Created_By" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Employee_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Employee_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_1_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_2_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Date_Identified" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="tns:Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Opportunity_Assessment" type="tns:Risk_Opportunity_Assessment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Region" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Region_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Additional_mitigation_controls" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="HOD_User_ID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Review_Date" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Document_Status" type="tns:Document_Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Mark_Okay" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Description2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Rejection_Reason" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Linked_Incident" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Linked_Incident_Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Category" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Category_Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Acceptance_Decision" type="tns:Risk_Acceptance_Decision" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Value_after_Control" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Control_Risk_Probability" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Control_Evaluation_Likelihood" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Control_Risk_Likelihood" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Control_Evaluation_Impact" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Control_Risk_Impact" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Control_Risk_L__x002A__I" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Control_RAG_Status" type="tns:Control_RAG_Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Value_at_Risk_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Probability" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Likelihood_Value" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Likelihood" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Impact_Value" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_Impact" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Risk_L__x002A__I" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RAG_Status" type="tns:RAG_Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Residual_Value" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Residual_Risk_Likelihood" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Residual_Risk_Likelihood_Cat" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Residual_Likelihood_Impact" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Residual_Risk_Impact" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Residual_Risk_L__x002A__I" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Residual_RAG_Status" type="tns:Residual_RAG_Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExistingRiskControl" type="tns:Existing_Risk_Controls_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RiskKRIs" type="tns:Risk_KRI_s_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RiskDrivers" type="tns:Risk_Drivers_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RiskMitigationPropose" type="tns:Risk_Mitigation_Propose_List" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RiskCard_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="RiskCard" type="tns:RiskCard" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="RiskCard_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="No" />
+          <xsd:enumeration value="Date_Created" />
+          <xsd:enumeration value="Created_By" />
+          <xsd:enumeration value="Employee_No" />
+          <xsd:enumeration value="Employee_Name" />
+          <xsd:enumeration value="Shortcut_Dimension_1_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_2_Code" />
+          <xsd:enumeration value="Date_Identified" />
+          <xsd:enumeration value="Type" />
+          <xsd:enumeration value="Risk_Description" />
+          <xsd:enumeration value="Risk_Opportunity_Assessment" />
+          <xsd:enumeration value="Risk_Region" />
+          <xsd:enumeration value="Risk_Region_Name" />
+          <xsd:enumeration value="Additional_mitigation_controls" />
+          <xsd:enumeration value="HOD_User_ID" />
+          <xsd:enumeration value="Review_Date" />
+          <xsd:enumeration value="Document_Status" />
+          <xsd:enumeration value="Mark_Okay" />
+          <xsd:enumeration value="Risk_Description2" />
+          <xsd:enumeration value="Rejection_Reason" />
+          <xsd:enumeration value="Linked_Incident" />
+          <xsd:enumeration value="Linked_Incident_Description" />
+          <xsd:enumeration value="Risk_Category" />
+          <xsd:enumeration value="Risk_Category_Description" />
+          <xsd:enumeration value="Risk_Acceptance_Decision" />
+          <xsd:enumeration value="Value_after_Control" />
+          <xsd:enumeration value="Control_Risk_Probability" />
+          <xsd:enumeration value="Control_Evaluation_Likelihood" />
+          <xsd:enumeration value="Control_Risk_Likelihood" />
+          <xsd:enumeration value="Control_Evaluation_Impact" />
+          <xsd:enumeration value="Control_Risk_Impact" />
+          <xsd:enumeration value="Control_Risk_L__x002A__I" />
+          <xsd:enumeration value="Control_RAG_Status" />
+          <xsd:enumeration value="Value_at_Risk_Amount" />
+          <xsd:enumeration value="Risk_Probability" />
+          <xsd:enumeration value="Risk_Likelihood_Value" />
+          <xsd:enumeration value="Risk_Likelihood" />
+          <xsd:enumeration value="Risk_Impact_Value" />
+          <xsd:enumeration value="Risk_Impact" />
+          <xsd:enumeration value="Risk_L__x002A__I" />
+          <xsd:enumeration value="RAG_Status" />
+          <xsd:enumeration value="Residual_Value" />
+          <xsd:enumeration value="Residual_Risk_Likelihood" />
+          <xsd:enumeration value="Residual_Risk_Likelihood_Cat" />
+          <xsd:enumeration value="Residual_Likelihood_Impact" />
+          <xsd:enumeration value="Residual_Risk_Impact" />
+          <xsd:enumeration value="Residual_Risk_L__x002A__I" />
+          <xsd:enumeration value="Residual_RAG_Status" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="RiskCard_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:RiskCard_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="No" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Read_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="RiskCard" type="tns:RiskCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="RiskCard" type="tns:RiskCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:RiskCard_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:RiskCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskCard" type="tns:RiskCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskCard" type="tns:RiskCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskCard_List" type="tns:RiskCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskCard_List" type="tns:RiskCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskCard" type="tns:RiskCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskCard" type="tns:RiskCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskCard_List" type="tns:RiskCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskCard_List" type="tns:RiskCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_ExistingRiskControl">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ExistingRiskControl_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_ExistingRiskControl_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_ExistingRiskControl_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_RiskKRIs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskKRIs_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_RiskKRIs_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_RiskKRIs_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_RiskDrivers">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskDrivers_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_RiskDrivers_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_RiskDrivers_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_RiskMitigationPropose">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="RiskMitigationPropose_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_RiskMitigationPropose_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_RiskMitigationPropose_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Read">
+    <part name="parameters" element="tns:Read" />
+  </message>
+  <message name="Read_Result">
+    <part name="parameters" element="tns:Read_Result" />
+  </message>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Create">
+    <part name="parameters" element="tns:Create" />
+  </message>
+  <message name="Create_Result">
+    <part name="parameters" element="tns:Create_Result" />
+  </message>
+  <message name="CreateMultiple">
+    <part name="parameters" element="tns:CreateMultiple" />
+  </message>
+  <message name="CreateMultiple_Result">
+    <part name="parameters" element="tns:CreateMultiple_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <message name="Delete">
+    <part name="parameters" element="tns:Delete" />
+  </message>
+  <message name="Delete_Result">
+    <part name="parameters" element="tns:Delete_Result" />
+  </message>
+  <message name="Delete_ExistingRiskControl">
+    <part name="parameters" element="tns:Delete_ExistingRiskControl" />
+  </message>
+  <message name="Delete_ExistingRiskControl_Result">
+    <part name="parameters" element="tns:Delete_ExistingRiskControl_Result" />
+  </message>
+  <message name="Delete_RiskKRIs">
+    <part name="parameters" element="tns:Delete_RiskKRIs" />
+  </message>
+  <message name="Delete_RiskKRIs_Result">
+    <part name="parameters" element="tns:Delete_RiskKRIs_Result" />
+  </message>
+  <message name="Delete_RiskDrivers">
+    <part name="parameters" element="tns:Delete_RiskDrivers" />
+  </message>
+  <message name="Delete_RiskDrivers_Result">
+    <part name="parameters" element="tns:Delete_RiskDrivers_Result" />
+  </message>
+  <message name="Delete_RiskMitigationPropose">
+    <part name="parameters" element="tns:Delete_RiskMitigationPropose" />
+  </message>
+  <message name="Delete_RiskMitigationPropose_Result">
+    <part name="parameters" element="tns:Delete_RiskMitigationPropose_Result" />
+  </message>
+  <portType name="RiskCard_Port">
+    <operation name="Read">
+      <input name="Read" message="tns:Read" />
+      <output name="Read_Result" message="tns:Read_Result" />
+    </operation>
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Create">
+      <input name="Create" message="tns:Create" />
+      <output name="Create_Result" message="tns:Create_Result" />
+    </operation>
+    <operation name="CreateMultiple">
+      <input name="CreateMultiple" message="tns:CreateMultiple" />
+      <output name="CreateMultiple_Result" message="tns:CreateMultiple_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+    <operation name="Delete">
+      <input name="Delete" message="tns:Delete" />
+      <output name="Delete_Result" message="tns:Delete_Result" />
+    </operation>
+    <operation name="Delete_ExistingRiskControl">
+      <input name="Delete_ExistingRiskControl" message="tns:Delete_ExistingRiskControl" />
+      <output name="Delete_ExistingRiskControl_Result" message="tns:Delete_ExistingRiskControl_Result" />
+    </operation>
+    <operation name="Delete_RiskKRIs">
+      <input name="Delete_RiskKRIs" message="tns:Delete_RiskKRIs" />
+      <output name="Delete_RiskKRIs_Result" message="tns:Delete_RiskKRIs_Result" />
+    </operation>
+    <operation name="Delete_RiskDrivers">
+      <input name="Delete_RiskDrivers" message="tns:Delete_RiskDrivers" />
+      <output name="Delete_RiskDrivers_Result" message="tns:Delete_RiskDrivers_Result" />
+    </operation>
+    <operation name="Delete_RiskMitigationPropose">
+      <input name="Delete_RiskMitigationPropose" message="tns:Delete_RiskMitigationPropose" />
+      <output name="Delete_RiskMitigationPropose_Result" message="tns:Delete_RiskMitigationPropose_Result" />
+    </operation>
+  </portType>
+  <binding name="RiskCard_Binding" type="tns:RiskCard_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Read">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:Read" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Read">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Read_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Create">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:Create" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Create">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Create_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:CreateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:Delete" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_ExistingRiskControl">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:Delete_ExistingRiskControl" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_ExistingRiskControl">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_ExistingRiskControl_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_RiskKRIs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:Delete_RiskKRIs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_RiskKRIs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_RiskKRIs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_RiskDrivers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:Delete_RiskDrivers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_RiskDrivers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_RiskDrivers_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_RiskMitigationPropose">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/riskcard:Delete_RiskMitigationPropose" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_RiskMitigationPropose">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_RiskMitigationPropose_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RiskCard_Service">
+    <port name="RiskCard_Port" binding="tns:RiskCard_Binding">
+      <address location="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%20TEST/Page/RiskCard" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,122 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+@{
+    ViewBag.Title = "Professional";
+}
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @{
+                Html.RenderPartial("_Sidebar");
+            }
+        </div>
+        <br />
+        <div class="col-md-9">
+            <style>
+                table, tr, th, td {
+                    border: none;
+                }
+
+                option:hover {
+                    background-color: #E33237;
+                }
+            </style>
+            <div class="box-header with-border">
+                <h4 class="box-title"> PROFESSIONAL COURSES </h4>
+                <div class="box-tools pull-right">
+                </div>
+            </div>
+            <section>
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped" style="border:none;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Qualification Code</th>
+                                <th>Qualification Name</th>
+                                <th>Section/Level</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{
+                                var index = 0;
+                            }
+                            @foreach (var item in Model.ProfessionalCourses)
+                            {
+                                index++;
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @using (Html.BeginForm("RemoveProfessional", "HomePage", new { key = item.Key }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-danger fa fa-trash xs-margin delete"></button>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@item.Qualification_Code</td>
+                                    <td>@item.Qualification_Name</td>
+                                    <td>@item.Section_Level</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <br />
+            <div>
+                <h3 id="NewProfessional" class="fa fa-plus"> Add New Professional Course</h3>
+            </div>
+            <br />
+            <div hidden id="AddLine">
+                @using (Html.BeginForm("ManageProfessional", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <h3 class="box-title">New Professional Course</h3>
+                    <hr />
+
+                    <input name="Applicant_No" value="@Model.No" type="hidden" />
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Name</label>
+                            <div class="col-md-12">
+                                <select name="Qualification_Code" class="input" required>
+                                    <option value="">Select</option>
+                                    @foreach (var rel in ViewBag.pc)
+                                    {
+                                        <option value="@rel.Code">@rel.Description</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Section/Level</label>
+                            <div class="col-md-12">
+                                <input name="Section_Level" type="text" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <input type="submit" value="Add Membership" class="btn btn-succ btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<br />
+<script src="~/Scripts/Default/home.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

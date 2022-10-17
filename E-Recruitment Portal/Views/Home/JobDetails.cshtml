@@ -1,0 +1,155 @@
+﻿@model E_Recruitment_Portal.CompanyJobCard.CompanyJobCard
+
+@using E_Recruitment_Portal.Recruitment
+
+@{
+    ViewBag.Title = "Job Details";
+}
+
+<style>
+    p {
+        line-height: normal;
+    }
+</style>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <p>@Html.ActionLink("Home Page", "Index", "Home")</p>
+        </li>
+        <li class="breadcrumb-item active">@ViewBag.Title</li>
+        <li class="breadcrumb-item active">@Model.Job_Designation</li>
+    </ol>
+    <h4><b>@Model.Job_Designation</b></h4>
+
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <h6><b>Description</b></h6>
+            <br />
+            @if (ViewBag.OpenJob != null)
+            {
+                foreach (Recruitment item in ViewBag.OpenJob)
+                {
+                    <p class="fa fa-calendar"> Application Deadline  <span><b style="padding-left: 10px; padding-right: 10px;">@item.End_Date.ToShortDateString()</b></span></p>
+                }
+            }
+        </div>
+        <div class="col-md-7">
+            <h5><b><u>Job Description</u></b></h5>
+            @Html.DisplayFor(model => model.Job_Designation)
+            <hr />
+            @{ int no = 0;}
+            @if (Model.KeyJobResponsibilities.Count() != 0)
+            {
+                <h5><b><u>Duties and Responsibilities</u></b></h5>
+
+                foreach (var item in Model.KeyJobResponsibilities.Where(m => m.Remarks != null))
+                {
+                    no++;
+                    <p>
+                        @if (item.Line_Type == E_Recruitment_Portal.CompanyJobCard.Line_Type.Header)
+                        {
+                            <b>@item.Remarks</b><br />
+                        }
+                        else if (item.Line_Type == E_Recruitment_Portal.CompanyJobCard.Line_Type.Objective || item.Line_Type == E_Recruitment_Portal.CompanyJobCard.Line_Type._blank_)
+                        {
+                            <span>@no . </span> @item.Remarks
+                        }
+                    </p>
+                }
+            }
+
+            @if (Model.Academics.Count() != 0)
+            {
+                <h5><b><u>Education (Start with the highest.)</u></b></h5>
+                int nos = 0;
+                foreach (var item in Model.Academics.Where(m => m.Qualification_Name != null))
+                {
+                    nos++;
+                    <p>
+                        <span>@nos . </span> @item.Qualification_Name
+                    </p>
+                }
+            }
+
+            @if (Model.KnowledgeRequired != null)
+            {
+
+                foreach (var item in Model.KnowledgeRequired.Where(m => m.Remarks != null))
+                {
+                    if (item.Line_Type == E_Recruitment_Portal.CompanyJobCard.Line_Type_5.Header)
+                    {
+                        <b>@item.Remarks</b>
+                    }
+                    else if (item.Line_Type == E_Recruitment_Portal.CompanyJobCard.Line_Type_5.Objective || item.Line_Type == E_Recruitment_Portal.CompanyJobCard.Line_Type_5._blank_)
+                    {
+                        @item.Remarks
+                    }
+                }
+            }
+
+            @if (Model.Experience.Count() != 0)
+            {
+                <h5><b><u>Work Experience</u></b></h5>
+
+                foreach (var item in Model.Experience.Where(m => m.Industry_Name != null))
+                { <p>Atleast @item.No_of_Years years in @item.Industry_Name or related field </p>
+            }
+        }
+
+            @if (Model.ProfessionalCourse.Count() != 0)
+            {
+                <h5><b><u>Profesional course </u></b></h5>
+
+                foreach (var item in Model.ProfessionalCourse.Where(m => m.Qualification_Name != null))
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            @item.Qualification_Name
+                        </div>
+                        <div class="col-md-6">
+                            Section/ Level ( @item.Section_Level )
+                        </div>
+                    </div>
+                }
+            }
+
+            @if (Model.ProfessionalMembership.Count() != 0)
+            {
+                <h5><b><u>Membership</u></b></h5>
+
+                foreach (var item in Model.ProfessionalMembership.Where(m => m.Description != null))
+                {
+                    @item.Name @item.Description
+                }
+            }
+        </div>
+        @if (ViewBag.OpenJob != null)
+        {
+            foreach (Recruitment item in ViewBag.OpenJob)
+            {
+                <div class="col-md-3">
+                    <div style="border: 1px solid black; padding: 20px; border-radius: 3px;">
+                        @if (User.Identity.Name.Count() != 0)
+                        {
+                            @Html.ActionLink("Apply for this job", "ApplicantEducation", "HomePage", new { jobid = item.Job_ID, no = item.No }, new { @class = "btn btn-company btn-block" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Apply for job", "Login", "Account", new { jobid = item.Job_ID, no = item.No }, new { @class = "btn btn-company btn-block" })
+                        }
+                        <br />
+                        <h6>Date Posted:</h6>
+                        <p>@item.Start_Date.ToShortDateString()</p>
+                        <hr />
+                        <h6>No. of Positions Advertised:</h6>
+                        <p>@item.Positions</p>
+                        <br />
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+

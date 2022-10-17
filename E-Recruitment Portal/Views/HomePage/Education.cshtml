@@ -1,0 +1,442 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+
+@using E_Recruitment_Portal.FieldsofStudy
+@using E_Recruitment_Portal.ApplicantJobEducation
+@{
+    ViewBag.Title = "Education Background";
+}
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @{
+                Html.RenderPartial("_Sidebar");
+            }
+        </div>
+        <br />
+        <div class="col-md-9">
+            <style>
+                table, tr, th, td {
+                    border: none;
+                }
+
+                option:hover {
+                    background-color: #E33237;
+                }
+            </style>
+            <div class="box-header with-border">
+                <h4 class="box-title"> EDUCATION BACKGROUND </h4>
+                <div class="box-tools pull-right">
+                </div>
+            </div>
+            <section>
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped" style="border:none;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Education Type</th>
+                                <th>Field of Study</th>
+                                <th>Course Code</th>
+                                <th>Course Name</th>
+                                <th>Institution Name</th>
+                                <th>Proficiency Level</th>
+                                <th>Country</th>
+                                <th>County</th>
+                                <th>Description</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{
+                                var index = 0;
+                            }
+                            @foreach (var item in Model.Education)
+                            {
+                                index++;
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @using (Html.BeginForm("RemoveEducation", "HomePage", new { key = item.Key }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-danger fa fa-trash xs-margin delete"></button>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@item.Start_Date.ToShortDateString()</td>
+                                    <td>@item.End_Date.ToShortDateString()</td>
+                                    <td>@item.Education_Type</td>
+                                    <td>@item.Field_of_Study</td>
+                                    <td>@item.Qualification_Code</td>
+                                    <td>@item.Qualification_Name</td>
+                                    <td>@item.Institution_Name</td>
+                                    <td>@item.Proficiency_Level</td>
+                                    <td>@item.Country</td>
+                                    <td>@item.Region</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Grade</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <br />
+            <div>
+                <h3 id="NewEducation" class="fa fa-plus"> Add New Education Level</h3>
+            </div>
+            <br />
+            <div hidden id="AddLine">
+                @using (Html.BeginForm("ManageEducation", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    ApplicantJobEducation models = new ApplicantJobEducation();
+
+                    <h3 class="box-title">New Education Level</h3>
+                    <hr />
+
+                    <input name="Applicant_No" value="@Model.No" type="hidden" />
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Education Type</label>
+                            <div class="col-md-12">
+                                @{
+                                    List<SelectListItem> llistItema = new List<SelectListItem>();
+                                    llistItema.Add(new SelectListItem
+                                    {
+                                        Text = "Primary",
+                                        Value = "Primary"
+                                    });
+                                    llistItema.Add(new SelectListItem
+                                    {
+                                        Text = "High School",
+                                        Value = "High_School"
+                                    });
+                                    llistItema.Add(new SelectListItem
+                                    {
+                                        Text = "College",
+                                        Value = "College"
+                                    });
+                                    llistItema.Add(new SelectListItem
+                                    {
+                                        Text = "University",
+                                        Value = "University"
+                                    });
+                                    llistItema.Add(new SelectListItem
+                                    {
+                                        Text = "Professional",
+                                        Value = "Professional"
+                                    });
+                                    llistItema.Add(new SelectListItem
+                                    {
+                                        Text = "Vocation",
+                                        Value = "Vocation"
+                                    });
+                                }
+                                @Html.DropDownList("Education_Type", llistItema, "Select", new { @class = "input", id = "education" })
+                                @Html.ValidationMessageFor(model => models.Education_Type, "", new { @class = "text-danger" })
+
+                                @*<select class="input" name="Education_Type">
+                                        <option value="">Select</option>
+                                        <option value="Primary">Primary</option>
+                                        <option value="High_School">High School</option>
+                                        <option value="College">College</option>
+                                        <option value="University">University</option>
+                                        <option value="Professional">Professional</option>
+                                        <option value="Vocation">Vocation</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Education Level</label>
+                            <div class="col-md-12">
+                                @*<select id="level" name="Education_Level" class="input" disabled="disabled"></select>*@
+                                @{
+                                    List<SelectListItem> llistItem = new List<SelectListItem>();
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Professional",
+                                        Value = "Professional"
+                                    });
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Certificate",
+                                        Value = "Certificate"
+                                    });
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Diploma",
+                                        Value = "Diploma"
+                                    });
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Higher/Post Graduate Diploma",
+                                        Value = "Higher_Post_Graduate_Diploma"
+                                    });
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Bachelors Degree",
+                                        Value = "Bachelors_Degree"
+                                    });
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Masters Degree",
+                                        Value = "Masters_Degree"
+                                    });
+                                    llistItem.Add(new SelectListItem
+                                    {
+                                        Text = "Doctorate",
+                                        Value = "Doctorate"
+                                    });
+                                }
+                                @Html.DropDownList("Education_Level", llistItem, "Select", new { @class = "input", id = "level", disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => models.Education_Level, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Field of Study</label>
+                            <div class="col-md-12">
+                                @*<select id="fos" name="Field_of_Study" class="input">
+                                        <option value="">Select</option>
+                                        @foreach (var rel in ViewBag.fos)
+                                        {
+                                            <option value="@rel.Code">@rel.Description</option>
+                                        }
+                                    </select>*@
+                                <select id="fos" name="Field_of_Study" class="input" disabled="disabled">
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Course Name</label>
+                            <div class="col-md-12">
+                                <select id="qc" name="Qualification_Code" class="input" disabled="disabled">
+                                    <option value="">Select</option>
+                                </select>
+                                @*<select name="Qualification_Code" class="input">
+                                        <option value="">Select</option>
+                                        @foreach (var rel in ViewBag.qc)
+                                        {
+                                            <option value="@rel.Code">@rel.Description</option>
+                                        }
+                                    </select>*@
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Start Date</label>
+                            <div class="col-md-12">
+                                <input name="Start_Date" type="date" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">End Date</label>
+                            <div class="col-md-12">
+                                <input name="End_Date" type="date" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Institution Name</label>
+                            <div class="col-md-12">
+                                <input name="Institution_Name" type="text" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Proficiency Level</label>
+                            <div class="col-md-12">
+                                <select class="input" id="proficiency" name="Proficiency_Level" disabled="disabled">
+                                    <option value="">Not Rated</option>
+                                    <option value="First_Class">First Class</option>
+                                    <option value="Second_Class_Upper">Second Class(Upper)</option>
+                                    <option value="Second_Class_Lower">Second Class(Lower)</option>
+                                    <option value="Second_Class">Second Class</option>
+                                    <option value="Pass">Pass</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Country</label>
+                            <div class="col-md-12">
+                                <select name="Country" class="input">
+                                    <option value="">Select</option>
+                                    @foreach (var rel in ViewBag.countries)
+                                    {
+                                        <option value="@rel.Code">@rel.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">County</label>
+                            <div class="col-md-12">
+                                <select name="Region" class="input">
+                                    <option value="">Select</option>
+                                    @foreach (var rel1 in ViewBag.county)
+                                    {
+                                        <option value="@rel1.County">@rel1.County</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Description</label>
+                            <div class="col-md-12">
+                                <input name="Description" id="description" type="text" class="input" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Grade</label>
+                            <div class="col-md-12">
+                                <input name="Grade" id="grade" type="text" class="input" disabled="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <input type="submit" value="Add Education Level" class="btn btn-succ btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<br />
+<script src="~/Scripts/Default/home.js"></script>
+
+@*<script type="text/javascript">
+        $("#education").change(function () {
+            var optionvalue = $(this).val();
+            if (optionvalue == 'Primary' || optionvalue == 'High_School' || optionvalue == ' ') {
+                stateDropdown.removeAttr('disabled');
+            } else {
+                stateDropdown.prop('disabled', 'disabled');
+            }
+        });
+        $("#education").trigger("change");
+    </script>*@
+
+<script type="text/javascript">
+    $(function () {
+        $('#education').on('change', function () {
+            var stateDropdown = $('#level');
+            var stateDropdownq = $('#proficiency');
+            var stateDropdown1 = $('#description');
+            var stateDropdown2 = $('#grade');
+            var optionvalue = $("#education").val();
+            if (optionvalue.length > 0) {
+                if ($('#education').val() == 'Primary' || $('#education').val() == 'High_School' || $('#education').val() == null) {
+                    stateDropdown.prop('disabled', 'disabled');
+                    stateDropdownq.attr('disabled', 'disabled');
+                    stateDropdown1.removeAttr("disabled");
+                    stateDropdown2.removeAttr("disabled");
+                } else {
+                    stateDropdown.removeAttr("disabled");
+                    stateDropdownq.removeAttr("disabled");
+                    stateDropdown1.attr('disabled', 'disabled');
+                    stateDropdown2.attr('disabled', 'disabled');
+                }
+            }
+        });
+        $("#education").trigger("change");
+    })
+</script>
+
+<script type="text/javascript">
+        $(function() {
+            $('#level').on('change', function() {
+                var stateDropdown = $('#fos');
+                //disable state drop down
+                stateDropdown.prop('disabled', 'disabled');
+                //clear drop down of old states
+                stateDropdown.empty();
+
+                //retrieve selected country
+                var optionvalue = $(this).val();
+                if (optionvalue.length > 0) {
+                    // retrieve data using a Url.Action() to construct url
+                    $.getJSON('@Url.Action("GetStates")', {
+                        uoption: optionvalue
+                    })
+                    .done(function (data) {
+                        //re-enable state drop down
+                        stateDropdown.removeAttr('disabled');
+                        //for each returned state
+                        stateDropdown.prepend("<option value=' ' selected='selected'>Select</option>");
+                        $.each(data, function (i, fos) {
+                            //Create new option
+                            var option = $('<option />').html(fos);
+                            //append state states drop down
+                            stateDropdown.append(option);
+                        });
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        var err = textStatus + ", " + error;
+                        console.log("Request Failed: " + err);
+                    });
+                }
+            });
+        })
+</script>
+
+<script type="text/javascript">
+        $(function() {
+            $('#fos').on('change', function() {
+                var stateDropdown = $('#qc');
+                //disable state drop down
+                stateDropdown.prop('disabled', 'disabled');
+                //clear drop down of old states
+                stateDropdown.empty();
+
+                //retrieve selected country
+                var optionvalue = $(this).val();
+                var optionvalue1 = $("#level").val();
+                if (optionvalue.length > 0) {
+                    // retrieve data using a Url.Action() to construct url
+                    $.getJSON('@Url.Action("GetStates1")', {
+                        uoption: optionvalue,
+                        uoption1: optionvalue1
+                    })
+                    .done(function (data) {
+                        //re-enable state drop down
+                        stateDropdown.removeAttr('disabled');
+                        //for each returned state
+                        stateDropdown.prepend("<option value=' ' selected='selected'>Select</option>");
+                        $.each(data, function (i, qc) {
+                            //Create new option
+                            var option = $('<option />').html(qc);
+                            //append state states drop down
+                            stateDropdown.append(option);
+                        });
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        var err = textStatus + ", " + error;
+                        console.log("Request Failed: " + err);
+                    });
+                }
+            });
+        })
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

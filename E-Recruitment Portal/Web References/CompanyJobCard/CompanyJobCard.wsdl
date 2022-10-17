@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/companyjobcard" targetNamespace="urn:microsoft-dynamics-schemas/page/companyjobcard" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/companyjobcard" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="Line_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Header" />
+          <xsd:enumeration value="Objective" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Key_Job_Responsibilities">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Responsibility_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Line_Type" type="tns:Line_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Remarks" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Key_Job_Responsibilities_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Key_Job_Responsibilities" type="tns:Key_Job_Responsibilities" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Education_Level">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Professional" />
+          <xsd:enumeration value="Certificate" />
+          <xsd:enumeration value="Diploma" />
+          <xsd:enumeration value="Higher_Post_Graduate_Diploma" />
+          <xsd:enumeration value="Bachelors_Degree" />
+          <xsd:enumeration value="Masters_Degree" />
+          <xsd:enumeration value="Doctorate" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Proficiency_Level">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Not_Rated" />
+          <xsd:enumeration value="First_Class" />
+          <xsd:enumeration value="Second_Class_Upper" />
+          <xsd:enumeration value="Second_Class_Lower" />
+          <xsd:enumeration value="Second_Class" />
+          <xsd:enumeration value="Pass" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Company_Job_Education">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Field_of_Education" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Field_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Education_Level" type="tns:Education_Level" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Qualification_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Qualification_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Proficiency_Level" type="tns:Proficiency_Level" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Score" type="xsd:decimal" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Company_Job_Education_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Company_Job_Education" type="tns:Company_Job_Education" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Hierarchy_Level">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Consultant" />
+          <xsd:enumeration value="Executive_Director" />
+          <xsd:enumeration value="First_Level_Manager" />
+          <xsd:enumeration value="Intern" />
+          <xsd:enumeration value="Middle_Level_Manager" />
+          <xsd:enumeration value="Supervisor" />
+          <xsd:enumeration value="Support_Staff" />
+          <xsd:enumeration value="Top_Level_Manager" />
+          <xsd:enumeration value="Trainee_Attachee" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Company_Job_Experience">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Industry" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Industry_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Hierarchy_Level" type="tns:Hierarchy_Level" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No_of_Years" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Score" type="xsd:decimal" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Company_Job_Experience_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Company_Job_Experience" type="tns:Company_Job_Experience" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Line_Type_5">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="_blank_" />
+          <xsd:enumeration value="Header" />
+          <xsd:enumeration value="Objective" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="Knowledge_Required">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Knowledge_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Line_Type" type="tns:Line_Type_5" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Remarks" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Knowledge_Required_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Knowledge_Required" type="tns:Knowledge_Required" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Company_Job_Prof_course">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Qualification_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Qualification_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Section_Level" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Company_Job_Prof_course_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Company_Job_Prof_course" type="tns:Company_Job_Prof_course" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Company_Job_Prof_Membership">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Company_Job_Prof_Membership_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Company_Job_Prof_Membership" type="tns:Company_Job_Prof_Membership" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Positions_Supervising">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Position_Supervised" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Remarks" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Positions_Supervising_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Positions_Supervising" type="tns:Positions_Supervising" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Job_Attachments">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Attachment" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_ID" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Job_Attachments_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="Job_Attachments" type="tns:Job_Attachments" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CompanyJobCard">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_ID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Job_Designation" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Dimension_2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Department_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Position_Reporting_to" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Grade" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="No_of_Posts" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Occupied_Position" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Vacancy" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Objective" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="KeyJobResponsibilities" type="tns:Key_Job_Responsibilities_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Academics" type="tns:Company_Job_Education_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Experience" type="tns:Company_Job_Experience_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="KnowledgeRequired" type="tns:Knowledge_Required_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProfessionalCourse" type="tns:Company_Job_Prof_course_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProfessionalMembership" type="tns:Company_Job_Prof_Membership_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Position_Supervising" type="tns:Positions_Supervising_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Attachments" type="tns:Job_Attachments_List" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CompanyJobCard_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="CompanyJobCard" type="tns:CompanyJobCard" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="CompanyJobCard_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Job_ID" />
+          <xsd:enumeration value="Job_Designation" />
+          <xsd:enumeration value="Dimension_2" />
+          <xsd:enumeration value="Department_Name" />
+          <xsd:enumeration value="Position_Reporting_to" />
+          <xsd:enumeration value="Grade" />
+          <xsd:enumeration value="No_of_Posts" />
+          <xsd:enumeration value="Occupied_Position" />
+          <xsd:enumeration value="Vacancy" />
+          <xsd:enumeration value="Objective" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="CompanyJobCard_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:CompanyJobCard_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Job_ID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Read_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="CompanyJobCard" type="tns:CompanyJobCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="CompanyJobCard" type="tns:CompanyJobCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:CompanyJobCard_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:CompanyJobCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyJobCard" type="tns:CompanyJobCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyJobCard" type="tns:CompanyJobCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyJobCard_List" type="tns:CompanyJobCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyJobCard_List" type="tns:CompanyJobCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyJobCard" type="tns:CompanyJobCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyJobCard" type="tns:CompanyJobCard" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyJobCard_List" type="tns:CompanyJobCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyJobCard_List" type="tns:CompanyJobCard_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_KeyJobResponsibilities">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="KeyJobResponsibilities_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_KeyJobResponsibilities_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_KeyJobResponsibilities_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Academics">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Academics_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Academics_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Academics_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Experience">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Experience_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Experience_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Experience_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_KnowledgeRequired">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="KnowledgeRequired_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_KnowledgeRequired_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_KnowledgeRequired_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_ProfessionalCourse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ProfessionalCourse_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_ProfessionalCourse_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_ProfessionalCourse_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_ProfessionalMembership">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ProfessionalMembership_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_ProfessionalMembership_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_ProfessionalMembership_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Position_Supervising">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Position_Supervising_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Position_Supervising_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Position_Supervising_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Attachments">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Attachments_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Attachments_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Attachments_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Read">
+    <part name="parameters" element="tns:Read" />
+  </message>
+  <message name="Read_Result">
+    <part name="parameters" element="tns:Read_Result" />
+  </message>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Create">
+    <part name="parameters" element="tns:Create" />
+  </message>
+  <message name="Create_Result">
+    <part name="parameters" element="tns:Create_Result" />
+  </message>
+  <message name="CreateMultiple">
+    <part name="parameters" element="tns:CreateMultiple" />
+  </message>
+  <message name="CreateMultiple_Result">
+    <part name="parameters" element="tns:CreateMultiple_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <message name="Delete">
+    <part name="parameters" element="tns:Delete" />
+  </message>
+  <message name="Delete_Result">
+    <part name="parameters" element="tns:Delete_Result" />
+  </message>
+  <message name="Delete_KeyJobResponsibilities">
+    <part name="parameters" element="tns:Delete_KeyJobResponsibilities" />
+  </message>
+  <message name="Delete_KeyJobResponsibilities_Result">
+    <part name="parameters" element="tns:Delete_KeyJobResponsibilities_Result" />
+  </message>
+  <message name="Delete_Academics">
+    <part name="parameters" element="tns:Delete_Academics" />
+  </message>
+  <message name="Delete_Academics_Result">
+    <part name="parameters" element="tns:Delete_Academics_Result" />
+  </message>
+  <message name="Delete_Experience">
+    <part name="parameters" element="tns:Delete_Experience" />
+  </message>
+  <message name="Delete_Experience_Result">
+    <part name="parameters" element="tns:Delete_Experience_Result" />
+  </message>
+  <message name="Delete_KnowledgeRequired">
+    <part name="parameters" element="tns:Delete_KnowledgeRequired" />
+  </message>
+  <message name="Delete_KnowledgeRequired_Result">
+    <part name="parameters" element="tns:Delete_KnowledgeRequired_Result" />
+  </message>
+  <message name="Delete_ProfessionalCourse">
+    <part name="parameters" element="tns:Delete_ProfessionalCourse" />
+  </message>
+  <message name="Delete_ProfessionalCourse_Result">
+    <part name="parameters" element="tns:Delete_ProfessionalCourse_Result" />
+  </message>
+  <message name="Delete_ProfessionalMembership">
+    <part name="parameters" element="tns:Delete_ProfessionalMembership" />
+  </message>
+  <message name="Delete_ProfessionalMembership_Result">
+    <part name="parameters" element="tns:Delete_ProfessionalMembership_Result" />
+  </message>
+  <message name="Delete_Position_Supervising">
+    <part name="parameters" element="tns:Delete_Position_Supervising" />
+  </message>
+  <message name="Delete_Position_Supervising_Result">
+    <part name="parameters" element="tns:Delete_Position_Supervising_Result" />
+  </message>
+  <message name="Delete_Attachments">
+    <part name="parameters" element="tns:Delete_Attachments" />
+  </message>
+  <message name="Delete_Attachments_Result">
+    <part name="parameters" element="tns:Delete_Attachments_Result" />
+  </message>
+  <portType name="CompanyJobCard_Port">
+    <operation name="Read">
+      <input name="Read" message="tns:Read" />
+      <output name="Read_Result" message="tns:Read_Result" />
+    </operation>
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Create">
+      <input name="Create" message="tns:Create" />
+      <output name="Create_Result" message="tns:Create_Result" />
+    </operation>
+    <operation name="CreateMultiple">
+      <input name="CreateMultiple" message="tns:CreateMultiple" />
+      <output name="CreateMultiple_Result" message="tns:CreateMultiple_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+    <operation name="Delete">
+      <input name="Delete" message="tns:Delete" />
+      <output name="Delete_Result" message="tns:Delete_Result" />
+    </operation>
+    <operation name="Delete_KeyJobResponsibilities">
+      <input name="Delete_KeyJobResponsibilities" message="tns:Delete_KeyJobResponsibilities" />
+      <output name="Delete_KeyJobResponsibilities_Result" message="tns:Delete_KeyJobResponsibilities_Result" />
+    </operation>
+    <operation name="Delete_Academics">
+      <input name="Delete_Academics" message="tns:Delete_Academics" />
+      <output name="Delete_Academics_Result" message="tns:Delete_Academics_Result" />
+    </operation>
+    <operation name="Delete_Experience">
+      <input name="Delete_Experience" message="tns:Delete_Experience" />
+      <output name="Delete_Experience_Result" message="tns:Delete_Experience_Result" />
+    </operation>
+    <operation name="Delete_KnowledgeRequired">
+      <input name="Delete_KnowledgeRequired" message="tns:Delete_KnowledgeRequired" />
+      <output name="Delete_KnowledgeRequired_Result" message="tns:Delete_KnowledgeRequired_Result" />
+    </operation>
+    <operation name="Delete_ProfessionalCourse">
+      <input name="Delete_ProfessionalCourse" message="tns:Delete_ProfessionalCourse" />
+      <output name="Delete_ProfessionalCourse_Result" message="tns:Delete_ProfessionalCourse_Result" />
+    </operation>
+    <operation name="Delete_ProfessionalMembership">
+      <input name="Delete_ProfessionalMembership" message="tns:Delete_ProfessionalMembership" />
+      <output name="Delete_ProfessionalMembership_Result" message="tns:Delete_ProfessionalMembership_Result" />
+    </operation>
+    <operation name="Delete_Position_Supervising">
+      <input name="Delete_Position_Supervising" message="tns:Delete_Position_Supervising" />
+      <output name="Delete_Position_Supervising_Result" message="tns:Delete_Position_Supervising_Result" />
+    </operation>
+    <operation name="Delete_Attachments">
+      <input name="Delete_Attachments" message="tns:Delete_Attachments" />
+      <output name="Delete_Attachments_Result" message="tns:Delete_Attachments_Result" />
+    </operation>
+  </portType>
+  <binding name="CompanyJobCard_Binding" type="tns:CompanyJobCard_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Read">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Read" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Read">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Read_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Create">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Create" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Create">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Create_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:CreateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_KeyJobResponsibilities">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete_KeyJobResponsibilities" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_KeyJobResponsibilities">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_KeyJobResponsibilities_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Academics">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete_Academics" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Academics">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Academics_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Experience">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete_Experience" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Experience">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Experience_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_KnowledgeRequired">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete_KnowledgeRequired" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_KnowledgeRequired">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_KnowledgeRequired_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_ProfessionalCourse">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete_ProfessionalCourse" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_ProfessionalCourse">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_ProfessionalCourse_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_ProfessionalMembership">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete_ProfessionalMembership" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_ProfessionalMembership">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_ProfessionalMembership_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Position_Supervising">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete_Position_Supervising" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Position_Supervising">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Position_Supervising_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Attachments">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyjobcard:Delete_Attachments" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Attachments">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Attachments_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CompanyJobCard_Service">
+    <port name="CompanyJobCard_Port" binding="tns:CompanyJobCard_Binding">
+      <address location="http://kmrcapp.kmrc.co.ke:7047/KMRC/WS/KMRC%20TEST/Page/CompanyJobCard" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

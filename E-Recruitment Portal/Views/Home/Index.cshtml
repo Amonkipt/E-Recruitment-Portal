@@ -1,0 +1,220 @@
+﻿@model PagedList.IPagedList<E_Recruitment_Portal.Recruitment.Recruitment>
+@using PagedList.Mvc;
+
+@using E_Recruitment_Portal.Models
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .topnav input[type=text] {
+        padding: 6px;
+        border: none;
+        font-size: 17px;
+    }
+
+    .titles li {
+        display: inline;
+        padding: 5px;
+        float: left;
+        width: auto;
+    }
+
+    .btn-dako {
+        background-color: #2E354E;
+        color: #FFFFFF;
+    }
+
+        .btn-dako:hover {
+            background-color: #2E354E;
+            color: #FFFFFF;
+        }
+
+    .btn-rd {
+        border: 1px solid #FFFFFF;
+    }
+
+        .btn-rd:hover {
+            border: 1px solid #FFFFFF;
+            background-color: #1A1A1A;
+        }
+</style>
+<style type="text/css" media="screen and (max-width:1200px)">
+    h1.out {
+        font-size: 30px;
+    }
+
+    h4.in {
+        font-size: 20px;
+    }
+</style>
+<div class="hero-wrap" style="background-image: url('/Require/images/milk.jpg'); opacity: 0.9; background-color: var(--tab-dominant-bg); height: 400px;" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="col-md-12 ftco-animate d-flex align-items-end" style="padding-top: 50px;">
+            <div class="text w-100">
+                @{
+                    Html.RenderPartial("_Feedback1");
+                }
+                <p style="color: var(--tab-white-color);" class="mb-4">SEARCH FROM OUR JOB OFFERS</p>
+                <h3 style="color: var(--tab-recessive-bg);" class="mb-4 out">Save Your Precious Time &amp; Get Your Dream Job Today</h3>
+                <br />
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                {
+                    <div class="topnav">
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { style = "background-color: #EAF2FE; border: 1px solid var(--tab-recessive-bg);" })<span style="margin: auto -15px; cursor: pointer;" id="clear">&times;</span>
+                    </div>
+                    <span><input type="submit" value="Search" class="btn btn-company" /></span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h4 class="text-left in"><b><u clas style="color: var(--tab-dominant-bg);">LATEST JOBS</u></b></h4>
+            @if (Model != null)
+            {
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped" style="border: none;">
+                        <thead style="display:none;">
+                            <tr>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("JobDetails", "Home", new { jobid = item.Job_ID, no=item.No })">
+                                            <div>
+                                                <b style="color: var(--tab-dominant-bg);">@item.Description</b><br />
+                                                <ul class="titles text-left">
+                                                    <li style="color: var(--tab-dominant-bg);"><span class="fa fa-clock-o" style="color: var(--tab-recessive-bg);"></span> Full Time</li>
+                                                    @if (item.Appointment_Type_Description != null)
+                                                    {
+                                                        <li style="color: var(--tab-dominant-bg);"><span class="fa fa-briefcase" style="color: var(--tab-recessive-bg);"></span> @item.Appointment_Type_Description</li>
+                                                    }
+                                                    <li style="color: var(--tab-dominant-bg);"><span class="fa fa-money" style="color: var(--tab-recessive-bg);"></span> Not Specified </li>
+                                                </ul>
+                                            </div>
+                                            <br />
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                </div>
+            }
+            else
+            {
+                <i>There are no open jobs at the moment</i>
+            }
+        </div>
+        <div class="col-md-4" style="background-color: #F8F8F8">
+            <h4 class="text-left in"><b><u style="color:var(--tab-dominant-bg);">FEATURED JOBS</u></b></h4>
+            @if (ViewBag.LatestJob != null)
+            {
+                foreach (var latest in ViewBag.LatestJob)
+                {
+                    <h6 style="color: var(--tab-recessive-bg);">@latest.Description</h6>
+                    <div class="btn btn-danger"> Full Time</div>
+                    <br />
+                    <b>Positions Advertised: @latest.Positions</b>
+                    <hr />
+                    <p> @latest.Reason_for_Recruitment_text</p>
+                    <br />
+                    <b><u>Date posted: @latest.Start_Date.ToShortDateString()</u></b>
+                }
+            }
+            else
+            {
+                <i>There are no featured jobs at the moment</i>
+            }
+            <br />
+        </div>
+    </div>
+    <br />
+</div>
+<div style="background-color: var(--tab-dominant-bg); padding-top:20px; padding-bottom:20px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h4 class="text-left"><b style="color:var(--tab-white-color)">SEEKING FOR A JOB?</b></h4>
+                <p class="text-left" style="color:var(--tab-white-color);">Browse hundreds of job offers and find the best suitable position.</p>
+            </div>
+            <div class="col-md-4" style="padding-top:30px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn btn-rd" style="color:var(--tab-white-color);"> Search Jobs</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-rd" style="color: var(--tab-white-color);"> Add a Resume</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .mySlides {
+        display: none;
+    }
+</style>
+<div class="w3-content text-center" style="width:100%; height:250px; background-color: #BFBCC8; padding-top: 20px;">
+    <div class="mySlides w3-container w3-red">
+        <div style="color:white;">
+            <img style="width:75px; height: 75px; border-radius: 50%;" src="~/Content/images/image.jpg" />
+            <br />
+            <p>
+                What a job application experience.  I appreciate the chance you are giving us to get access
+                to your services just at <br /> the comfort of our homes. Keep up the excellent work.
+            </p>
+        </div>
+    </div>
+
+    <div class="mySlides w3-container">
+        <div style="color:white;">
+            <img style="width:75px; height: 75px; border-radius: 50%;" src="~/Content/images/img1.jpg" />
+            <br />
+            <p>
+                Thanks for the great service. @GeneralSetup.CompanyName has completely surpassed my expectations.
+                Your platform is the most <br /> lucrative and convenient employment website I've ever used.
+            </p>
+        </div>
+    </div>
+
+    <div class="mySlides w3-container w3-xlarge w3-white w3-card-4">
+        <div style="color:white;">
+            <img style="width:75px; height: 75px; border-radius: 50%;" src="~/Content/images/img4.jpg" />
+            <br />
+            <p>
+                I didn&#8217;t even need training. Using it was very easy and straight forward. It really saved me
+                time, money and effort that I could have used to writing, printing <br /> and delivering the application letter
+                to your offices. I have saved alot.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > x.length) { slideIndex = 1 }
+        x[slideIndex - 1].style.display = "block";
+        setTimeout(carousel, 2000);
+    }
+</script>

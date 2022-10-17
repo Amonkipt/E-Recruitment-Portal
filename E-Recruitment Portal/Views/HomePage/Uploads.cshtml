@@ -1,0 +1,72 @@
+﻿@model E_Recruitment_Portal.Models.UploadFile
+@{
+    ViewBag.Title = "Uploads";
+}
+
+<h2>Uploads</h2>
+@*<div class="col-md-6">
+        @using (Html.BeginForm("Uploades", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <input name="Need_Code" value="@ViewBag.JobId" type="hidden" />
+            <input name="Application_No" value="@ViewBag.No" type="hidden" />
+            <div class="col-md-12">
+                <label class="control-label">Upload your CV</label>
+                <br />
+                <div class="form-control col-md-10">
+                    <input type="file" name="file" accept="application/pdf,application/vnd.ms-word" />
+                </div>
+            </div>
+            <br />
+            <div class="col-md-10">
+                <input type="submit" value="Apply for this job" class="btn btn-success" />
+            </div>
+        }
+    </div>*@
+
+@using (Html.BeginForm("UploadFL", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "upload" }))
+{
+
+    <input type="file" id="fileToUpload" accept="application/pdf" class="form-control" />
+    <br />
+    <div class="col-md-10">
+        <input type="submit" value="Apply for this job" class="btn btn-success" />
+    </div>
+}
+
+<script>
+   
+    $("#upload").submit(function (event) {
+        event.preventDefault();
+
+        alert("wewew")
+        if (window.FormData == undefined)
+            alert("Error: FormData is undefined");
+
+        else {
+            var fileUpload = $("#fileToUpload").get(0);
+            var files = fileUpload.files;
+
+            var fileData = new FormData();
+
+            fileData.append(files[0].name, files[0]);
+            alert("kiplekwa")
+            $.ajax({
+                url: $("#upload").attr("action"),
+                type: 'post',
+                datatype: 'json',
+                contentType: false,
+                processData: false,
+                async: false,
+                data: fileData,
+                success: function (response) {
+                    alert(response);
+                }
+            });
+        }
+
+    });
+</script>
+
+
+

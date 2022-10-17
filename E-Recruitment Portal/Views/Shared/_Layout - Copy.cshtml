@@ -1,0 +1,233 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recruitment Portal</title>
+    <link rel="icon" type="image/ico" style="border-radius: 50%;" href="~/Require/images/kmrclogo.png" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Require/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Require/css/animate.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Require/fonts/material-icon/css/material-design-iconic-font.min.css" rel="stylesheet" />
+    <link href="~/Require/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Require/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/Require/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/smart_wizard.min.css" rel="stylesheet" />
+    <link href="~/Content/smart_wizard_theme_arrows.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.fancybox.min.css" rel="stylesheet" />
+
+    <link href="~/Require/css/flaticon.css" rel="stylesheet" />
+    <link href="~/Require/css/style.css" rel="stylesheet" />
+
+    @RenderSection("styles", required: false)
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+
+    <link href="~/css/css/style.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+    <style>
+        .btn-success, .btn-success:focus, .btn-success:hover {
+            background-color: #2E354E;
+        }
+
+        .btn-warning, .btn-warning:focus, .btn-warning:hover {
+            background-color: #E33237;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: #2E354E;
+            font-size: 16px;
+            border: none;
+        }
+        a {
+            color: #2E354E;
+            font-size: 16px;
+            border: none;
+        }
+
+            a:hover, .dropbtn:hover {
+                color: #E33237;
+                font-size: 16px;
+                border: none;
+            }
+
+            a:focus {
+                color: #E33237;
+                font-size: 16px;
+                border: none;
+            }
+
+        a, .dropdown {
+            color: #2E354E;
+            position: relative;
+            display: inline-block;
+            padding-right: 15px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            color: #2E354E;
+        }
+
+            .dropdown-content a {
+                color: #2E354E;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    color: #E33237;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            color: #E33237;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: #E33237;
+        }
+
+        .top-container {
+            background-color: #f1f1f1;
+            padding: 1px;
+            text-align: center;
+            height: 50px;
+        }
+
+        hr {
+            border-color: #2E354E;
+            border-width: 1px;
+        }
+
+        .a {
+            padding-top: 5px;
+        }
+
+        .input:focus {
+            background-color: #E8F0FE;
+        }
+
+        .btn-succ {
+            background-color: #2E354E;
+            color: #FFFFFF;
+        }
+
+            .btn-succ:hover {
+                background-color: #2E354E;
+                color: #FFFFFF;
+            }
+
+        .fa-plus {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="navbar_top">
+            <style>
+                .navbar-dark {
+                    background-color: white;
+                    border-bottom: 1px solid #2E354E;
+                }
+            </style>
+            <div class="navbar navbar-dark navbar-inverse navbar-expand-lg ftco_navbar bg- ftco-navbar-info" id="ftco-navbar">
+                <div class="container">
+                    <div class="float-left"><a class="logo" href="~/Home/Index"><img src="~/Require/images/kmrclogo.png" style="max-height: 60px; padding-left: 0px;" alt="logo"></a></div>
+                    <button style="color:#2E354E;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="oi oi-menu"></span> Menu
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="ftco-nav">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="body-content">
+        @{ Html.RenderPartial("_Feedback"); }
+        @RenderBody()
+    </div>
+    <div style="border-top: 2px solid #2E354E; ">
+        @Html.Partial("_Footer")
+    </div>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+    <script src="~/Require/js/jquery.min.js"></script>
+    <script src="~/Require/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/Require/js/popper.min.js"></script>
+    <script src="~/Require/js/bootstrap.min.js"></script>
+    <script src="~/Require/js/jquery.easing.1.3.js"></script>
+    <script src="~/Require/js/jquery.waypoints.min.js"></script>
+    <script src="~/Require/js/jquery.stellar.min.js"></script>
+    <script src="~/Require/js/owl.carousel.min.js"></script>
+    <script src="~/Require/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Require/js/jquery.animateNumber.min.js"></script>
+    <script src="~/Require/js/scrollax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Require/js/google-map.js"></script>
+
+    <script src="~/Scripts/jquery.fancybox.min.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>*@
+
+
+    <script src="~/Require/js/main.js"></script>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Scripts.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery.smartWizard.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.example').DataTable();
+        });
+    </script>
+
+    <script>
+        if ($(window).width() > 992) {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 40) {
+                    $('#navbar_top').addClass("fixed-top");
+                    // add padding top to show content behind navbar
+                    $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+                } else {
+                    $('#navbar_top').removeClass("fixed-top");
+                    // remove padding top from body
+                    $('body').css('padding-top', '0');
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(".fancybox").fancybox();
+    </script>
+
+</body>
+</html>

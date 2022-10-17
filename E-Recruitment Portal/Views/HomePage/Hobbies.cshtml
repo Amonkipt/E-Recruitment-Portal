@@ -1,0 +1,112 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+@{
+    ViewBag.Title = "Hobbies";
+}
+
+<script>
+    $(function () {
+
+        $(".datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
+    })
+</script>
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @{
+                Html.RenderPartial("_Sidebar");
+            }
+        </div>
+        <br />
+        <div class="col-md-9">
+            <style>
+                table, tr, th, td {
+                    border: none;
+                }
+
+                option:hover {
+                    background-color: #E33237;
+                }
+            </style>
+            <div class="box-header with-border">
+                <h4 class="box-title"> HOBBIES </h4>
+                <div class="box-tools pull-right">
+                </div>
+            </div>
+            <section>
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped" style="border:none;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Hobbies</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model.Hobbies)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @using (Html.BeginForm("RemoveHobby", "HomePage", new { key = item.Key }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-danger fa fa-trash xs-margin delete"></button>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@item.Hobbies</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <br />
+            <div>
+                <h3 id="NewHobbies" class="fa fa-plus"> Add New Hobby</h3>
+            </div>
+            <br />
+            <div hidden id="AddLine">
+                @using (Html.BeginForm("ManageHobbies", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <h3 class=""> New Hobby</h3>
+                    <hr />
+
+                    <input name="No" value="@Model.No" type="hidden" />
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <label class="control-label col-md-12">Hobby</label>
+                            <div class="col-md-12">
+                                <input name="Hobbies" type="text" class="input" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 a">
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <input type="submit" value="Add Hobby" class="btn btn-succ btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<br />
+<script src="~/Scripts/Default/home.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

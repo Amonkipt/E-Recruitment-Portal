@@ -1,0 +1,235 @@
+﻿@model E_Recruitment_Portal.ApplicantCard.ApplicantCard
+@{
+    ViewBag.Title = "Work Experience";
+}
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @{
+                Html.RenderPartial("_Sidebar");
+            }
+        </div>
+        <br />
+        <div class="col-md-9">
+            <style>
+                table, tr, th, td {
+                    border: none;
+                }
+
+                .btn-succ {
+                    background-color: #2E354E;
+                    color: #FFFFFF;
+                }
+
+                    .btn-succ:hover {
+                        background-color: #2E354E;
+                        color: #FFFFFF;
+                    }
+
+                option:hover {
+                    background-color: #E33237;
+                }
+            </style>
+            <div class="box-header with-border">
+                <h4 class="box-title"> WORK EXPERIENCE </h4>
+                <div class="box-tools pull-right">
+                </div>
+            </div>
+            <section>
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped" style="border:none;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Employer</th>
+                                <th>Industry</th>
+                                <th>Hierarchy Level</th>
+                                <th>Functional Area</th>
+                                <th>Job Title</th>
+                                <th>No of Years</th>
+                                <th>Country</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Employer Email Address</th>
+                                <th>Employer Postal Address</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{
+                                var index = 0;
+                            }
+                            @foreach (var item in Model.Experience)
+                            {
+                                index++;
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @using (Html.BeginForm("RemoveWorkExperience", "HomePage", new { key = item.Key }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-danger fa fa-trash xs-margin delete"></button>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@item.Start_Date.ToShortDateString()</td>
+                                    <td>@item.End_Date.ToShortDateString()</td>
+                                    <td>@item.Employer</td>
+                                    <td>@item.Industry</td>
+                                    <td>@item.Hierarchy_Level</td>
+                                    <td>@item.Functional_Area</td>
+                                    <td>@item.Job_Title</td>
+                                    <td>@item.No_of_Years</td>
+                                    <td>@item.Country</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Location</td>
+                                    <td>@item.Employer_Email_Address</td>
+                                    <td>@item.Employer_Postal_Address</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <br />
+            <div>
+                <h3 id="NewExperience" class="fa fa-plus"> Add New Work Experience</h3>
+            </div>
+            <br />
+            <div hidden id="AddLine">
+                @using (Html.BeginForm("ManageExperience", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <h3 class="box-title">New Work Experience</h3>
+                    <hr />
+
+                    <input name="Applicant_No" value="@Model.No" type="hidden" />
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Start Date</label>
+                            <div class="col-md-12">
+                                <input name="Start_Date" type="date" class="input" required />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">End Date</label>
+                            <div class="col-md-12">
+                                <input name="End_Date" type="date" class="input" required />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Employer</label>
+                            <div class="col-md-12">
+                                <input name="Employer" type="text" class="input" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Industry</label>
+                            <div class="col-md-12">
+                                <select name="Industry" class="input">
+                                    <option value="">Select</option>
+                                    @foreach (var rel in ViewBag.cji)
+                                    {
+                                        <option value="@rel.Code">@rel.Description</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Hierarchy Level</label>
+                            <div class="col-md-12">
+                                <select class="input" name="Hierarchy_Level">
+                                    <option value="">Select</option>
+                                    <option value="Consultant">Consultant</option>
+                                    <option value="Excecutive_Director">Excecutive/Director</option>
+                                    <option value="First_Level_Manager">First Level Manager</option>
+                                    <option value="Intern">Intern</option>
+                                    <option value="Middle_Level_Manager">Middle Level Manager</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Support_Staff">Support Staff</option>
+                                    <option value="Top_Level_Manager">Top Level Manager</option>
+                                    <option value="Trainee_Attachee">Trainee/Attachee</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Functional Area</label>
+                            <div class="col-md-12">
+                                <input name="Functional_Area" type="text" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Job Title</label>
+                            <div class="col-md-12">
+                                <input name="Job_Title" type="text" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">No of Years</label>
+                            <div class="col-md-12">
+                                <input name="No_of_Years" type="text" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Country</label>
+                            <div class="col-md-12">
+                                <select name="Country" class="input">
+                                    <option value="">Select</option>
+                                    @foreach (var rel in ViewBag.countries)
+                                    {
+                                        <option value="@rel.Code">@rel.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Description</label>
+                            <div class="col-md-12">
+                                <input name="Description" type="text" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Employer Email Address</label>
+                            <div class="col-md-12">
+                                <input name="Employer_Email_Address" type="email" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 a">
+                            <label class="control-label col-md-12">Employer Postal Address</label>
+                            <div class="col-md-12">
+                                <input name="Employer_Postal_Address" type="text" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 a">
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+                                <input type="submit" value="Add Work Experience" class="btn btn-succ btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<br />
+<script src="~/Scripts/Default/home.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

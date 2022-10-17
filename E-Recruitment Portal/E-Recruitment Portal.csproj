@@ -1,0 +1,1274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{837813B3-D6DD-466D-A157-BA7CEB8D9A05}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>E_Recruitment_Portal</RootNamespace>
+    <AssemblyName>E-Recruitment Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44361</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.9</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Client.Policy, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.Office.Client.Policy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Client.TranslationServices, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.Office.Client.TranslationServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.SharePoint.Tools, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.Office.SharePoint.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Online.SharePoint.Client.Tenant, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.Online.SharePoint.Client.Tenant.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ProjectServer.Client, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.ProjectServer.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.DocumentManagement, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.DocumentManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Publishing, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.Publishing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime.Windows, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.Runtime.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Search, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Search.Applications, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.Search.Applications.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Taxonomy, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.Taxonomy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.UserProfiles, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.UserProfiles.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.WorkflowServices, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.20616.12000\lib\net45\Microsoft.SharePoint.Client.WorkflowServices.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.2\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.2\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.2\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.2\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SweetController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalClass.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Migrations\202010280922431_InitialCreate.cs" />
+    <Compile Include="Migrations\202010280922431_InitialCreate.Designer.cs">
+      <DependentUpon>202010280922431_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationModel.cs" />
+    <Compile Include="Models\CV.cs" />
+    <Compile Include="Models\DefaultJsonResponse.cs" />
+    <Compile Include="Models\GeneralSetup.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ServicesDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Web References\AcademicQualifications\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ApplicantCard\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ApplicantHobbies\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Applicantjobapplied\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ApplicantJobEducation\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ApplicantJobExperience\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ApplicantJobProfessionalCourse\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ApplicantJobprofessionalmembership\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CompanyJobCard\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CompanyJobIndustries\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CountriesRegions\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CountyList\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\FieldsofStudy\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Jobsapplied\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\OnlinePortal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProfMemberships\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProfMembership\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Qualifications\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\RecruitmentCard\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Recruitment\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Referees\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\RiskCard\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\bootstrap-datepicker.css" />
+    <Content Include="Content\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\images\dashboard.jpg" />
+    <Content Include="Content\images\image.jpg" />
+    <Content Include="Content\images\image1.jpg" />
+    <Content Include="Content\images\img1.jpg" />
+    <Content Include="Content\images\img3.jpg" />
+    <Content Include="Content\images\img4.jpg" />
+    <Content Include="Content\images\pc1.jpg" />
+    <Content Include="Content\images\pic.jpg" />
+    <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="Content\jquery.fancybox.min.css" />
+    <Content Include="Content\smart_wizard.min.css" />
+    <Content Include="Content\smart_wizard_all.min.css" />
+    <Content Include="Content\smart_wizard_theme_arrows.min.css" />
+    <Content Include="Content\sweetalert.min.css" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="css\css\footer.css" />
+    <Content Include="css\css\style.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\js\jquery.min.js" />
+    <Content Include="css\js\main.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Require\bootstrap.bundle.min.js" />
+    <Content Include="Require\bootstrap.min.css" />
+    <Content Include="Require\css\ajax-loader.gif" />
+    <Content Include="Require\css\animate.css" />
+    <Content Include="Require\css\bootstrap.min.css" />
+    <Content Include="Require\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Require\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Require\css\css\bootstrap-reboot.css" />
+    <Content Include="Require\css\css\mixins\_text-hide.css" />
+    <Content Include="Require\css\css\style.css" />
+    <Content Include="Require\css\flaticon.css" />
+    <Content Include="Require\css\magnific-popup.css" />
+    <Content Include="Require\css\owl.carousel.min.css" />
+    <Content Include="Require\css\owl.theme.default.min.css" />
+    <Content Include="Require\css\style.css" />
+    <Content Include="Require\fonts\flaticon\backup.txt" />
+    <Content Include="Require\fonts\flaticon\font\flaticon.css" />
+    <Content Include="Require\fonts\flaticon\font\flaticon.html" />
+    <Content Include="Require\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Require\fonts\material-icon\css\material-design-iconic-font.css" />
+    <Content Include="Require\fonts\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="Require\fonts\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300italic.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500italic.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-600.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700italic.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800italic.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-900.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-italic.svg" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-regular.svg" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700.svg" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700italic.svg" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-italic.svg" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-regular.svg" />
+    <Content Include="Require\images\clogo.png" />
+    <Content Include="Require\images\dashboard.jpg" />
+    <Content Include="Require\images\logo.png" />
+    <Content Include="Require\images\milk.jpg" />
+    <Content Include="Require\images\registration.jpg" />
+    <Content Include="Require\images\user.png" />
+    <Content Include="Require\jquery.min.js" />
+    <Content Include="Require\js\bootstrap.min.js" />
+    <Content Include="Require\js\google-map.js" />
+    <Content Include="Require\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Require\js\jquery.animateNumber.min.js" />
+    <Content Include="Require\js\jquery.easing.1.3.js" />
+    <Content Include="Require\js\jquery.magnific-popup.min.js" />
+    <Content Include="Require\js\jquery.min.js" />
+    <Content Include="Require\js\jquery.stellar.min.js" />
+    <Content Include="Require\js\jquery.waypoints.min.js" />
+    <Content Include="Require\js\main.js" />
+    <Content Include="Require\js\owl.carousel.min.js" />
+    <Content Include="Require\js\popper.min.js" />
+    <Content Include="Require\js\scrollax.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Require\css\.DS_Store" />
+    <Content Include="Require\css\bootstrap\.DS_Store" />
+    <Content Include="Require\css\css\.DS_Store" />
+    <Content Include="Require\fonts\.DS_Store" />
+    <Content Include="Require\fonts\flaticon\.DS_Store" />
+    <Content Include="Require\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Require\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Require\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Require\fonts\flaticon\font\Flaticon.woff2" />
+    <Content Include="Require\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="Require\fonts\flaticon\license\license.pdf" />
+    <Content Include="Require\fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Require\fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Require\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Require\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300italic.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300italic.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300italic.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-300italic.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500italic.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500italic.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500italic.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-500italic.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-600.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-600.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-600.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-600.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700italic.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700italic.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700italic.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-700italic.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800italic.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800italic.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800italic.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-800italic.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-900.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-900.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-900.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-900.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-italic.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-italic.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-italic.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-italic.woff2" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-regular.eot" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-regular.ttf" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-regular.woff" />
+    <Content Include="Require\fonts\poppins\poppins-v5-latin-regular.woff2" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700.eot" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700.ttf" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700.woff" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700.woff2" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700italic.eot" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700italic.ttf" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700italic.woff" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-700italic.woff2" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-italic.eot" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-italic.ttf" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-italic.woff" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-italic.woff2" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-regular.eot" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-regular.ttf" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-regular.woff" />
+    <Content Include="Require\fonts\poppins\roboto-condensed-v16-latin-regular.woff2" />
+    <Content Include="Require\js\.DS_Store" />
+    <Content Include="Require\scss\.DS_Store" />
+    <Content Include="Require\scss\bootstrap\.DS_Store" />
+    <Content Include="Require\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Require\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Require\scss\bootstrap\bootstrap.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="Require\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="Require\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="Require\scss\bootstrap\_alert.scss" />
+    <Content Include="Require\scss\bootstrap\_badge.scss" />
+    <Content Include="Require\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="Require\scss\bootstrap\_button-group.scss" />
+    <Content Include="Require\scss\bootstrap\_buttons.scss" />
+    <Content Include="Require\scss\bootstrap\_card.scss" />
+    <Content Include="Require\scss\bootstrap\_carousel.scss" />
+    <Content Include="Require\scss\bootstrap\_close.scss" />
+    <Content Include="Require\scss\bootstrap\_code.scss" />
+    <Content Include="Require\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="Require\scss\bootstrap\_dropdown.scss" />
+    <Content Include="Require\scss\bootstrap\_forms.scss" />
+    <Content Include="Require\scss\bootstrap\_functions.scss" />
+    <Content Include="Require\scss\bootstrap\_grid.scss" />
+    <Content Include="Require\scss\bootstrap\_images.scss" />
+    <Content Include="Require\scss\bootstrap\_input-group.scss" />
+    <Content Include="Require\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="Require\scss\bootstrap\_list-group.scss" />
+    <Content Include="Require\scss\bootstrap\_media.scss" />
+    <Content Include="Require\scss\bootstrap\_mixins.scss" />
+    <Content Include="Require\scss\bootstrap\_modal.scss" />
+    <Content Include="Require\scss\bootstrap\_nav.scss" />
+    <Content Include="Require\scss\bootstrap\_navbar.scss" />
+    <Content Include="Require\scss\bootstrap\_pagination.scss" />
+    <Content Include="Require\scss\bootstrap\_popover.scss" />
+    <Content Include="Require\scss\bootstrap\_print.scss" />
+    <Content Include="Require\scss\bootstrap\_progress.scss" />
+    <Content Include="Require\scss\bootstrap\_reboot.scss" />
+    <Content Include="Require\scss\bootstrap\_root.scss" />
+    <Content Include="Require\scss\bootstrap\_spinners.scss" />
+    <Content Include="Require\scss\bootstrap\_tables.scss" />
+    <Content Include="Require\scss\bootstrap\_toasts.scss" />
+    <Content Include="Require\scss\bootstrap\_tooltip.scss" />
+    <Content Include="Require\scss\bootstrap\_transitions.scss" />
+    <Content Include="Require\scss\bootstrap\_type.scss" />
+    <Content Include="Require\scss\bootstrap\_utilities.scss" />
+    <Content Include="Require\scss\bootstrap\_variables.scss" />
+    <Content Include="Require\scss\style.scss" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Templates\_Email.cshtml" />
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Content\css\bootstrap-datepicker.css.map" />
+    <Content Include="Content\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\css\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\css\bootstrap-datepicker3.standalone.css.map" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Default\home.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.fancybox.min.js" />
+    <Content Include="Scripts\jquery.smartWizard.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Scripts.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\JobDetails.cshtml" />
+    <Content Include="Web References\ApplicantCard\ApplicantCard.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\_Image.cshtml" />
+    <Content Include="Views\Shared\_Feedback.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\HomePage\Dashboard.cshtml" />
+    <Content Include="Views\HomePage\Profile.cshtml" />
+    <Content Include="Views\HomePage\Education.cshtml" />
+    <Content Include="Views\HomePage\WorkExperience.cshtml" />
+    <Content Include="Views\HomePage\Referees.cshtml" />
+    <Content Include="Views\HomePage\Hobbies.cshtml" />
+    <Content Include="Views\HomePage\Professional.cshtml" />
+    <Content Include="Views\HomePage\Membership.cshtml" />
+    <Content Include="Web References\AcademicQualifications\AcademicQualifications.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\HomePage\ApplicationDetails.cshtml" />
+    <Content Include="Views\HomePage\OpenApplications.cshtml" />
+    <Content Include="Views\HomePage\SubmittedApplications.cshtml" />
+    <Content Include="Views\Shared\_Empty.cshtml" />
+    <Content Include="Views\HomePage\Uploads.cshtml" />
+    <Content Include="Views\Shared\_Feedback1.cshtml" />
+    <Content Include="Views\HomePage\Dashboard1.cshtml" />
+    <Content Include="Views\HomePage\ApplicantEducation.cshtml" />
+    <Content Include="Views\HomePage\Profile - Copy.cshtml" />
+    <Content Include="Views\HomePage\ViewAll.cshtml" />
+    <Content Include="Views\HomePage\Index.cshtml" />
+    <Content Include="Views\HomePage\AddOrEdit.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <None Include="Web References\AcademicQualifications\AcademicQualifications.wsdl" />
+    <None Include="Web References\AcademicQualifications\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ApplicantCard\ApplicantCard.wsdl" />
+    <None Include="Web References\ApplicantCard\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\ApplicantJobEducation\ApplicantJobEducation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\ApplicantHobbies\ApplicantHobbies.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\ApplicantHobbies\ApplicantHobbies.wsdl" />
+    <None Include="Web References\ApplicantHobbies\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\Applicantjobapplied\Applicantjobapplied.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Applicantjobapplied\Applicantjobapplied.wsdl" />
+    <Content Include="Web References\Applicantjobapplied\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\ApplicantJobEducation\ApplicantJobEducation.wsdl" />
+    <None Include="Web References\ApplicantJobEducation\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\ApplicantJobProfessionalCourse\ApplicantJobProfessionalCourse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\ApplicantJobExperience\ApplicantJobExperience.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\ApplicantJobExperience\ApplicantJobExperience.wsdl" />
+    <None Include="Web References\ApplicantJobExperience\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ApplicantJobProfessionalCourse\ApplicantJobProfessionalCourse.wsdl" />
+    <None Include="Web References\ApplicantJobProfessionalCourse\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\ApplicantJobprofessionalmembership\ApplicantJobprofessionalmembership.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\ApplicantJobprofessionalmembership\ApplicantJobprofessionalmembership.wsdl" />
+    <None Include="Web References\ApplicantJobprofessionalmembership\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\RecruitmentCard\RecruitmentCard.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\CountriesRegions\CountriesRegions.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\CompanyJobIndustries\CompanyJobIndustries.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\CompanyJobCard\CompanyJobCard.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\CompanyJobCard\CompanyJobCard.wsdl" />
+    <None Include="Web References\CompanyJobCard\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CompanyJobIndustries\CompanyJobIndustries.wsdl" />
+    <None Include="Web References\CompanyJobIndustries\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CountriesRegions\CountriesRegions.wsdl" />
+    <Content Include="Web References\CountriesRegions\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\FieldsofStudy\FieldsofStudy.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\CountyList\CountyList.wsdl" />
+    <None Include="Web References\CountyList\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\FieldsofStudy\FieldsofStudy.wsdl" />
+    <Content Include="Web References\FieldsofStudy\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\Qualifications\Qualifications.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\ProfMembership\ProfMembership.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Jobsapplied\Jobsapplied.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Jobsapplied\Jobsapplied.wsdl" />
+    <Content Include="Web References\Jobsapplied\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\OnlinePortal\OnlinePortal.wsdl" />
+    <None Include="Web References\OnlinePortal\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\ProfMemberships\ProfMemberships.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\ProfMemberships\ProfMemberships.wsdl" />
+    <Content Include="Web References\ProfMemberships\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\ProfMembership\ProfMembership.wsdl" />
+    <Content Include="Web References\ProfMembership\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\Qualifications\Qualifications.wsdl" />
+    <Content Include="Web References\Qualifications\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\RecruitmentCard\RecruitmentCard.wsdl" />
+    <None Include="Web References\RecruitmentCard\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\RiskCard\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\RiskCard\RiskCard.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\Recruitment\Recruitment.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Recruitment\Recruitment.wsdl" />
+    <None Include="Web References\Recruitment\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\Referees\Referees.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\Referees\Referees.wsdl" />
+    <None Include="Web References\Referees\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\RiskCard\RiskCard.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010280922431_InitialCreate.resx">
+      <DependentUpon>202010280922431_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://192.168.88.8:23802/KDB_LIVE/WS/KDBTEST/Page/Applicantjobapplied">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Applicantjobapplied\</RelPath>
+      <UpdateFromURL>http://192.168.88.8:23802/KDB_LIVE/WS/KDBTEST/Page/Applicantjobapplied</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_Applicantjobapplied_Applicantjobapplied_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.88.8:23802/KDB_LIVE/WS/KDBTEST/Page/CountyList">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CountyList\</RelPath>
+      <UpdateFromURL>http://192.168.88.8:23802/KDB_LIVE/WS/KDBTEST/Page/CountyList</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_CountyList_CountyList_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Codeunit/OnlinePortal">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\OnlinePortal\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Codeunit/OnlinePortal</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_OnlinePortal_OnlinePortal</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/AcademicQualifications">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AcademicQualifications\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/AcademicQualifications</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_AcademicQualifications_AcademicQualifications_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantCard">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ApplicantCard\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantCard</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_ApplicantCard_ApplicantCard_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantHobbies">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ApplicantHobbies\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantHobbies</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_ApplicantHobbies_ApplicantHobbies_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantJobEducation">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ApplicantJobEducation\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantJobEducation</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_ApplicantJobEducation_ApplicantJobEducation_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantJobExperience">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ApplicantJobExperience\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantJobExperience</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_ApplicantJobExperience_ApplicantJobExperience_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantJobProfessionalCourse">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ApplicantJobProfessionalCourse\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantJobProfessionalCourse</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_ApplicantJobProfessionalCourse_ApplicantJobProfessionalCourse_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantJobprofessionalmembership">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ApplicantJobprofessionalmembership\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ApplicantJobprofessionalmembership</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_ApplicantJobprofessionalmembership_ApplicantJobprofessionalmembership_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/CompanyJobIndustries">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CompanyJobIndustries\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/CompanyJobIndustries</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_CompanyJobIndustries_CompanyJobIndustries_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/CountriesRegions">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CountriesRegions\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/CountriesRegions</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_CountriesRegions_CountriesRegions_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/FieldsofStudy">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\FieldsofStudy\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/FieldsofStudy</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_FieldsofStudy_FieldsofStudy_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/Jobsapplied">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Jobsapplied\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/Jobsapplied</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_Jobsapplied_Jobsapplied_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ProfMembership">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProfMembership\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/ProfMembership</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_ProfMembership_ProfMembership_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/Qualifications">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Qualifications\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/Qualifications</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_Qualifications_Qualifications_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/Recruitment">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Recruitment\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/Recruitment</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_Recruitment_Recruitment_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/RecruitmentCard">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RecruitmentCard\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/RecruitmentCard</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_RecruitmentCard_RecruitmentCard_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/Referees">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Referees\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/Referees</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_Referees_Referees_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/RiskCard">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RiskCard\</RelPath>
+      <UpdateFromURL>http://agileoffice.agilebiz.co.ke:12347/KMRC/WS/KMRC%2520TEST/Page/RiskCard</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_RiskCard_RiskCard_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://kmrcapp.kmrc.co.ke:7047/KMRC/WS/KMRC%2520TEST/Page/CompanyJobCard">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CompanyJobCard\</RelPath>
+      <UpdateFromURL>http://kmrcapp.kmrc.co.ke:7047/KMRC/WS/KMRC%2520TEST/Page/CompanyJobCard</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_CompanyJobCard_CompanyJobCard_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://kmrcapp.kmrc.co.ke:7047/KMRC/WS/KMRC%2520TEST/Page/ProfMemberships">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProfMemberships\</RelPath>
+      <UpdateFromURL>http://kmrcapp.kmrc.co.ke:7047/KMRC/WS/KMRC%2520TEST/Page/ProfMemberships</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>E_Recruitment_Portal_ProfMemberships_ProfMemberships_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64455</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44365</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
